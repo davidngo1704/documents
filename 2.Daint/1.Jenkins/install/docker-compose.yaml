@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  jenkins:
+    container_name: jenkins
+    restart: always
+    image: jenkins/jenkins:lts
+    privileged: true
+    user: root
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
+    ports:
+      - 8080:8080
+    volumes:
+      - /usr/bin/kubectl:/usr/bin/kubectl
+      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /root/jenkins_home:/var/jenkins_home
+      - /etc/hosts:/etc/hosts:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
