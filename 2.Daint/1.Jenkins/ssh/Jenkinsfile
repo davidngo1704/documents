@@ -1,0 +1,25 @@
+node {
+    stage("Build") {
+        checkout([
+                $class: 'GitSCM',
+                branches: [[name: '*/master' ]],
+                extensions: scm.extensions,
+                userRemoteConfigs: [[
+                    url: 'https://gitlab.com/davidngo1704/nest-cron-job',
+                    credentialsId: 'test-thu'
+                ]]
+        ])
+        sh "ls"
+    }
+    stage("Test") {
+        echo "Testing...."
+    }
+    stage("Delivery") {
+        echo "Delivery...."
+    }
+    stage("Deploy") {
+        sshagent (credentials: ['ssh-services']) {
+            sh 'ssh -o StrictHostKeyChecking=no -l root 10.192.0.169 pwd'
+        }
+    }
+}
