@@ -1,0 +1,319 @@
+{
+    "GlobalConfiguration": {
+      "BaseUrl": "http://10.162.81.92:4953"
+    },
+    "Routes": [
+      {
+        "DownstreamPathTemplate": "/api/Menus/GetDVCMenus",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.dvc.cfg",
+            "Port": 80
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/CFG/Menus/GetDVCMenus",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.dvc.cfg"
+      },
+      {
+        "DownstreamPathTemplate": "/api/FormDefinition/AnonymousGet",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.dvc.cfg",
+            "Port": 80
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/CFG/FormDefinition/AnonymousGet",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.dvc.cfg"
+      },
+      {
+        "DownstreamPathTemplate": "/api/account/login",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.dvc.ums",
+            "Port": 80
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/ums/account/login",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.dvc.ums"
+      },
+      {
+        "DownstreamPathTemplate": "/api/account/register",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.dvc.ums",
+            "Port": 80
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/ums/account/register",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.dvc.ums"
+      },
+      {
+        "DownstreamPathTemplate": "/api/account/login-dvc",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.dvc.ums",
+            "Port": 80
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/ums/account/login-dvc",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.dvc.ums"
+      },
+      {
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.dvc.dms",
+            "Port": 3000
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/dms/{everything}",
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "SwaggerKey": "ubdt.cmc.ts.dvc.dms"
+      },
+      {
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.dvc.wfs",
+            "Port": 3000
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/wfs/{everything}",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.dvc.wfs"
+      },
+      {
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.mc.biz",
+            "Port": 3000
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/mc/biz/{everything}",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.mc.biz"
+      },
+      {
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.dvc.biz",
+            "Port": 3000
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/biz/{everything}",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.dvc.biz"
+      },
+      {
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.dvc.ums",
+            "Port": 80
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/ums/{everything}",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.dvc.ums"
+      },
+      {
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.dvc.ctl",
+            "Port": 80
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/ctl/{everything}",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.dvc.ctl"
+      },
+      {
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.dvc.cfg",
+            "Port": 80
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/CFG/{everything}",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.dvc.cfg"
+      },
+      {
+        "DownstreamPathTemplate": "/api/{everything}",
+        "DownstreamScheme": "http",
+        "DownstreamHostAndPorts": [
+          {
+            "Host": "ubdt.cmc.ts.tms",
+            "Port": 3000
+          }
+        ],
+        "UpstreamPathTemplate": "/ubdt/dvc/tms/{everything}",
+        "UpstreamHttpMethod": [
+          "GET",
+          "POST",
+          "PUT",
+          "DELETE"
+        ],
+        "SwaggerKey": "ubdt.cmc.ts.tms"
+      }
+    ],
+    "SwaggerEndPoints": [
+      {
+        "Key": "ubdt.cmc.ts.tms",
+        "Config": [
+          {
+            "Name": "ubdt.cmc.ts.tms api",
+            "Version": "v1",
+            "Url": "http://ubdt.cmc.ts.tms:3000/swagger/v1/swagger.json"
+          }
+        ]
+      },
+      {
+        "Key": "ubdt.cmc.ts.dvc.cfg",
+        "Config": [
+          {
+            "Name": "ubdt.cmc.ts.dvc.cfg api",
+            "Version": "v1",
+            "Url": "http://ubdt.cmc.ts.dvc.cfg/swagger/v1/swagger.json"
+          }
+        ]
+      },
+      {
+        "Key": "ubdt.cmc.ts.mc.biz",
+        "Config": [
+          {
+            "Name": "ubdt.cmc.ts.mc.biz api",
+            "Version": "v1",
+            "Url": "http://ubdt.cmc.ts.mc.biz:3000/swagger/v1/swagger.json"
+          }
+        ]
+      },
+      {
+        "Key": "ubdt.cmc.ts.dvc.biz",
+        "Config": [
+          {
+            "Name": "ubdt.cmc.ts.dvc.biz api",
+            "Version": "v1",
+            "Url": "http://ubdt.cmc.ts.dvc.biz:3000/swagger/v1/swagger.json"
+          }
+        ]
+      },
+      {
+        "Key": "ubdt.cmc.ts.dvc.ums",
+        "Config": [
+          {
+            "Name": "ubdt.cmc.ts.dvc.ums api",
+            "Version": "v1",
+            "Url": "http://ubdt.cmc.ts.dvc.ums/swagger/v1/swagger.json"
+          }
+        ]
+      },
+      {
+        "Key": "ubdt.cmc.ts.dvc.ctl",
+        "Config": [
+          {
+            "Name": "ubdt.cmc.ts.dvc.ctl api",
+            "Version": "v1",
+            "Url": "http://ubdt.cmc.ts.dvc.ctl/swagger/v1/swagger.json"
+          }
+        ]
+      },
+      {
+        "Key": "ubdt.cmc.ts.dvc.dms",
+        "Config": [
+          {
+            "Name": "ubdt.cmc.ts.dvc.dms api",
+            "Version": "v1",
+            "Url": "http://ubdt.cmc.ts.dvc.dms:3000/swagger/v1/swagger.json"
+          }
+        ]
+      },
+      {
+        "Key": "ubdt.cmc.ts.dvc.wfs",
+        "Config": [
+          {
+            "Name": "ubdt.cmc.ts.dvc.wfs api",
+            "Version": "v1",
+            "Url": "http://ubdt.cmc.ts.dvc.wfs:3000/swagger/v1/swagger.json"
+          }
+        ]
+      }
+    ]
+  }
+  
