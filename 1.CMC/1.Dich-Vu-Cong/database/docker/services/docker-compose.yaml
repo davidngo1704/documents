@@ -1,0 +1,321 @@
+version: '3.4'
+
+networks:
+  lab:
+    external:
+      name: cmc
+services:
+  ubdt.cmc.ts.dvc:
+    image: 10.162.80.114:5000/cmc/ts/reactjs/cmc-ts-dvc:latest-rc
+    restart: always
+    hostname: ubdt.cmc.ts.dvc
+    container_name: ubdt.cmc.ts.dvc
+    environment:
+      - PROFILE=production
+      - SecurityAPI_URL=http://appdemo.cmcsoft.com:5555/edoc/sign/
+      - API_URL=http://ag.ubdt.cmcts.vn/ubdt/dvc/
+      - SERVICE_CFG=CFG/
+      - SERVICE_CTL=ctl/
+      - SERVICE_UMS=ums/
+      - WS_URL=http://ns.ubdt.cmcts.vn
+      - TIMEOUT=60
+      - USE_CAPTCHA=false
+      - SIGN_OPTION_APP_NAME=MC
+      - SIGN_OPTION_APP_KEY=7445BB6C9F3D474C933F505009F93EF4
+      - HASH_ALG=SHA-256
+      - WITH_TSA=false
+      - TSA_URL=http://ca.gov.vn/tsa
+      - TSA_LOGIN=
+      - TSA_PASS=
+      - HOME_PATH=home/Home
+      - LANDING_PATH=home/todo
+      - LANDING_PARAMS=
+      - CAL_DIRECTION=horizontal
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - /u01/data/ubdt/web-dvc:/usr/share/nginx/html/assets/brand
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "4400:80"
+    networks:
+      - lab
+  ubdt.cmc.ts.mc:
+    image: 10.162.80.114:5000/cmc/ts/reactjs/cmc-ts-mc:latest-rc
+    restart: always
+    hostname: ubdt.cmc.ts.mc
+    container_name: ubdt.cmc.ts.mc
+    environment:
+      - PROFILE=production
+      - SecurityAPI_URL=http://appdemo.cmcsoft.com:5555/edoc/sign/
+      - API_URL=http://ag.ubdt.cmcts.vn/ubdt/dvc/
+      - SERVICE_CFG=CFG/
+      - SERVICE_CTL=ctl/
+      - SERVICE_UMS=ums/
+      - WS_URL=http://ns.ubdt.cmcts.vn
+      - TIMEOUT=60
+      - USE_CAPTCHA=false
+      - SIGN_OPTION_APP_NAME=MC
+      - SIGN_OPTION_APP_KEY=7445BB6C9F3D474C933F505009F93EF4
+      - HASH_ALG=SHA-256
+      - WITH_TSA=false
+      - TSA_URL=http://ca.gov.vn/tsa
+      - TSA_LOGIN=
+      - TSA_PASS=
+      - HOME_PATH=home/Home
+      - LANDING_PATH=home/todo
+      - LANDING_PARAMS=
+      - CAL_DIRECTION=horizontal
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - /u01/data/ubdt/web-mc:/usr/share/nginx/html/assets/brand
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "4401:80"
+    networks:
+      - lab
+  ubdt.cmc.ts.tms:
+    image: 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-tms:latest
+    restart: always
+    hostname: ubdt.cmc.ts.tms
+    container_name: ubdt.cmc.ts.tms
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PORT=3000
+      - Cors=http://localhost:3000,http://localhost:3001,http://10.162.80.112:4400,http://10.162.80.112:4401,http://hcmc.ubdt.cmcts.vn
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=test_ubdt_tms;Integrated Security=true;Pooling=true;
+      - ScheduleOptions__Path=/scheduler
+      - ScheduleOptions__DashboardTitle=Dịch vụ công trực tuyến
+      - ScheduleOptions__AppPath=http://10.162.80.112:4401
+      - ScheduleOptions__Account=admin
+      - ScheduleOptions__Password=Cts@1234
+      - LocationRoot=/tms
+      - EnableCache=true
+      - Redis__Configuration=redis:6379
+      - Redis__DbId=1
+      - TimeZoneId=SE Asia Standard Time
+      - RabbitOptions__Host=rabbitmq:5672
+      - RabbitOptions__VirtualHost=ubdt
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Abcd123$$
+      - ApiGateway=http://apigateway.internal:3000/ubdt/dvc/
+    ports:
+      - 4402:3000
+    volumes:
+      - /u01/data/ubdt/tms:/tms
+    networks:
+      - lab
+  ubdt.cmc.ts.dvc.ctl:
+    image: 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-ctl:latest-rc
+    restart: always
+    hostname: ubdt.cmc.ts.dvc.ctl
+    container_name: ubdt.cmc.ts.dvc.ctl
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=test_ubdt_ctl;Integrated Security=true;Pooling=true;
+      - EnableCache=true
+      - LocationRoot=/ctl
+      - Redis__Configuration=redis:6379
+      - Redis__DbId=2
+      - RabbitOptions__Host=rabbitmq:5672
+      - RabbitOptions__VirtualHost=ubdt
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Abcd123$$
+      - ApiGateway=http://apigateway.internal:3000/ubdt/dvc/
+    volumes:
+      - /u01/data/ubdt/ctl:/ctl
+    networks:
+      - lab
+  ubdt.cmc.ts.mc.biz:
+    image: 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-mc-biz:latest
+    restart: always
+    hostname: ubdt.cmc.ts.mc.biz
+    container_name: ubdt.cmc.ts.mc.biz
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PORT=3000
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=test_ubdt_mc;Integrated Security=true;Pooling=true;
+      - LocationRoot=/mc
+      - Redis__Configuration=redis:6379
+      - Redis__DbId=3
+      - EnableCache=true
+      - RabbitOptions__Host=rabbitmq:5672
+      - RabbitOptions__VirtualHost=ubdt
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Abcd123$$
+      - ApiGateway=http://apigateway.internal:3000/ubdt/dvc/
+    volumes:
+      - /u01/data/ubdt/mc:/mc
+    networks:
+      - lab
+  ubdt.cmc.ts.dvc.wfs:
+    image: 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-wfs:latest
+    restart: always
+    hostname: ubdt.cmc.ts.dvc.wfs
+    container_name: ubdt.cmc.ts.dvc.wfs
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PORT=3000
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=test_ubdt_wfs;Integrated Security=true;Pooling=true;
+      - LocationRoot=/wfs
+      - Redis__Configuration=redis:6379
+      - Redis__DbId=4
+      - EnableCache=true
+      - RabbitOptions__Host=rabbitmq:5672
+      - RabbitOptions__VirtualHost=ubdt
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Abcd123$$
+      - ApiGateway=http://apigateway.internal:3000/ubdt/dvc/
+    volumes:
+      - /u01/data/ubdt/wfs:/wfs
+    networks:
+      - lab
+  ubdt.cmc.ts.dvc.ums:
+    image: 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-ums:latest-rc
+    restart: always
+    hostname: ubdt.cmc.ts.dvc.ums
+    container_name: ubdt.cmc.ts.dvc.ums
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - JwtTokenConfig__Secret=1234567890123456789
+      - JwtTokenConfig__Issuer=http://cmc.ts.edoc.ums
+      - JwtTokenConfig__Audience=http://cmc.ts.edoc.ums
+      - JwtTokenConfig__AccessTokenExpiration=120
+      - JwtTokenConfig__RefreshTokenExpiration=60
+      - RabbitOptions__Host=rabbitmq:5672
+      - RabbitOptions__VirtualHost=ubdt
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Abcd123$$
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=test_ubdt_ums;Integrated Security=true;Pooling=true;
+      - LocationRoot=/ums
+      - SmtpClient__Host=smtp.gmail.com
+      - SmtpClient__Port=587
+      - SmtpClient__UserName=user@gmail.com
+      - SmtpClient__Password=secure_password
+      - Services__DMS=/dvc/dms/
+      - Services__WFS=/wfs/
+      - Services__CTL=/dvc/ctl/
+      - Services__UMS=/dvc/ums/
+      - Services__CFG=/dvc/cfg/
+      - Services__NOTI=/dvc/notification/
+      - Redis__Configuration=redis:6379
+      - Redis__DbId=5
+      - EnableCache=true
+      - TZ=Asia/Ho_Chi_Minh
+      - ApiGateway=http://apigateway.internal:3000/ubdt/dvc/
+    volumes:
+      - /u01/data/ubdt/ums:/ums
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - lab
+  ubdt.cmc.ts.dvc.dms:
+    image: 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-dms:latest
+    restart: always
+    hostname: ubdt.cmc.ts.dvc.dms
+    container_name: ubdt.cmc.ts.dvc.dms
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PORT=3000
+      - LocationRoot=/dms
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=test_ubdt_dms;Integrated Security=true;Pooling=true;
+      - Redis__Configuration=redis:6379
+      - Redis__DbId=6
+      - EnableCache=true
+      - RabbitOptions__Host=rabbitmq:5672
+      - RabbitOptions__VirtualHost=ubdt
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Abcd123$$
+      - ApiGateway=http://apigateway.internal:3000/ubdt/dvc/
+    networks:
+      - lab
+    volumes:
+      - /u01/data/ubdt/dms:/dms
+  ubdt.cmc.ts.dvc.cfg:
+    image: 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-cfg:latest-rc
+    restart: always
+    hostname: ubdt.cmc.ts.dvc.cfg
+    container_name: ubdt.cmc.ts.dvc.cfg
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=test_ubdt_cfg;Integrated Security=true;Pooling=true;
+      - JwtTokenConfig__Secret=1234567890123456789
+      - JwtTokenConfig__Issuer=http://cmc.ts.edoc.ums
+      - JwtTokenConfig__Audience=http://cmc.ts.edoc.ums
+      - JwtTokenConfig__AccessTokenExpiration=20
+      - JwtTokenConfig__RefreshTokenExpiration=60
+      - EnableCache=true
+      - Redis__Configuration=redis:6379
+      - Redis__DbId=7
+      - LocationRoot=/cfg
+      - TZ=Asia/Ho_Chi_Minh
+      - RabbitOptions__Host=rabbitmq:5672
+      - RabbitOptions__VirtualHost=ubdt
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Abcd123$$
+      - ApiGateway=http://apigateway.internal:3000/ubdt/dvc/
+    networks:
+      - lab
+    volumes:
+      - /u01/data/ubdt/cfg:/cfg
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+  ubdt.cmc.ts.dvc.biz:
+    image: 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-biz:latest
+    restart: always
+    hostname: ubdt.cmc.ts.dvc.biz
+    container_name: ubdt.cmc.ts.dvc.biz
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PORT=3000
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=test_ubdt_dvc;Integrated Security=true;Pooling=true;
+      - LocationRoot=/dvc
+      - Redis__Configuration=redis:6379
+      - Redis__DbId=8
+      - EnableCache=true
+      - RabbitOptions__Host=rabbitmq:5672
+      - RabbitOptions__VirtualHost=ubdt
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Abcd123$$
+      - ApiGateway=http://apigateway.internal:3000/ubdt/dvc/
+    volumes:
+      - /u01/data/ubdt/dvc:/dvc
+    networks:
+      - lab
+  apigateway.public:
+    image: 10.162.80.114:5000/cmc/ts/dotnet/core/api-gateway:latest
+    restart: always
+    hostname: apigateway.public
+    container_name: apigateway.public
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PORT=3000
+    ports:
+      - 4403:3000
+    volumes:
+      - /u01/data/ubdt/apigateway/public:/app/config
+    networks:
+      - lab
+  apigateway.internal:
+    image: 10.162.80.114:5000/cmc/ts/dotnet/core/api-gateway:latest
+    restart: always
+    hostname: apigateway.internal
+    container_name: apigateway.internal
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - PORT=3000
+    ports:
+      - 4404:3000
+    volumes:
+      - /u01/data/ubdt/apigateway/internal:/app/config
+    networks:
+      - lab

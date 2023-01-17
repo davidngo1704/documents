@@ -1,0 +1,310 @@
+version: '3.4'
+
+networks:
+  lab:
+    external:
+      name: cmc
+services:
+  ubdt.cmc.ts.dvc.biz:
+    image: ${DOCKER_REGISTRY}/cmc/ts/dotnet/core/cmc-ts-dvc-biz:latest
+    hostname: ubdt.cmc.ts.dvc.biz
+    container_name: ubdt.cmc.ts.dvc.biz
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${PROFILE}
+      - PORT=3000
+    ports:
+      - 6969:3000
+    networks:
+      - lab
+  ubdt.cmc.ts.dvc.cfg:
+    image: ${DOCKER_REGISTRY}/cmc/ts/dotnet/core/cmc-ts-dvc-cfg:latest-rc
+    hostname: ubdt.cmc.ts.dvc.cfg
+    container_name: ubdt.cmc.ts.dvc.cfg
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${PROFILE}
+      - AllowedHosts=${ALLOWED_HOSTS}
+      - Serilog__MinimumLevel__Default=${DEFAULT_LOG}
+      - Serilog__MinimumLevel__Override__Microsoft=${MICROSOFT_LOG}
+      - Serilog__MinimumLevel__Override__System=${SYSTEM_LOG}
+      - Serilog__Properties__ApplicationName=cfg
+      - Serilog__Using=["Serilog.Sinks.Console","Serilog.Sinks.Debug","Serilog.Sinks.Async","Serilog.Sinks.File"]
+      - Serilog__Enrich=["FromLogContext","WithMachineName","WithThreadId","WithExceptionDetails","WithCorrelationIdHeader"]
+      - Serilog__WriteTo__0__Name=Async
+      - Serilog__WriteTo__0__Args__configure__0__Name=Console
+      - Serilog__WriteTo__0__Args__configure__0__Args__outputTemplate=[{Timestamp:dd-MM-yyyy HH:mm:ss.fff} {Level:u3}] {Message:lj}{NewLine}{Exception}
+      - Serilog__WriteTo__1__Name=Async
+      - Serilog__WriteTo__1__Args__configure__0__Name=File
+      - Serilog__WriteTo__1__Args__configure__0__Args__path=${LOCATION_ROOT}/logs/cfg/data.log
+      - Serilog__WriteTo__1__Args__configure__0__Args__outputTemplate=[{Timestamp:dd-MM-yyyy HH:mm:ss.fff} {Level:u3}] {Message:lj}{NewLine}{Exception}
+      - Serilog__WriteTo__1__Args__configure__0__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__configure__0__Args__retainedFileCountLimit=30
+      - Serilog__WriteTo__1__Args__configure__0__Args__shared=true
+      - Serilog__WriteTo__1__Args__configure__0__Args__rollOnFileSizeLimit=true
+      - Serilog__WriteTo__1__Args__configure__0__Args__fileSizeLimitBytes=26214400
+      - ElasticsearchOptions__Uri=${ES_URI}
+      - ElasticsearchOptions__User=${ES_USER}
+      - ElasticsearchOptions__Password=${ES_PWD}
+      - ConsulOptions__Enable=false
+      - ConsulOptions__ConsulAddress=http://cmc.ts.consul:8500
+      - ConsulOptions__ServiceAddress=http://ubdt.cmc.ts.dvc.cfg
+      - ConsulOptions__ServiceName=ubdt.cmc.ts.dvc.cfg
+      - ConsulOptions__ServiceId=ubdt.cmc.ts.dvc.cfg
+      - ConsulOptions__DisableAgentCheck=false
+      - ConsulOptions__Tags=[]
+      - SwaggerOptions__VersionName=v1
+      - SwaggerOptions__RoutePrefix=
+      - DatabaseOptions__Provider=${DB_PROVIDER}
+      - DatabaseOptions__ConnectionStrings__${DB_PROVIDER}=Server=${DB_HOST};Port=${DB_PORT};User ID=${DB_USER};Password='${DB_PAS}';Database=${STACK}_cfg;Integrated Security=true;Pooling=true;
+      - JwtTokenConfig__Secret=${JWT_SECRET}
+      - JwtTokenConfig__Issuer=${JWT_ISSUER}
+      - JwtTokenConfig__Audience=${JWT_ISSUER}
+      - JwtTokenConfig__AccessTokenExpiration=${JWT_EXPIRED}
+      - JwtTokenConfig__RefreshTokenExpiration=${JWT_REFRESH}
+      - API_GATEWAY=${API_GATEWAY_INTERNAL}
+      - Services__DMS=/dvc/dms/
+      - Services__WFS=/wfs/
+      - Services__CTL=/dvc/ctl/
+      - Services__UMS=/dvc/ums/
+      - EnableCache=true
+      - Redis__Configuration=${REDIS_CONFIGURATION}
+      - Redis__Instance=${STACK}_cfg
+      - LocationRoot=${LOCATION_ROOT}
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - ${LOCATION_MOUNT}/cfg:${LOCATION_ROOT}
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - lab
+  ubdt.cmc.ts.dvc.ctl:
+    image: ${DOCKER_REGISTRY}/cmc/ts/dotnet/core/cmc-ts-dvc-ctl:latest-rc
+    hostname: ubdt.cmc.ts.dvc.ctl
+    container_name: ubdt.cmc.ts.dvc.ctl
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${PROFILE}
+      - AllowedHosts=${ALLOWED_HOSTS}
+      - Serilog__MinimumLevel__Default=${DEFAULT_LOG}
+      - Serilog__MinimumLevel__Override__Microsoft=${MICROSOFT_LOG}
+      - Serilog__MinimumLevel__Override__System=${SYSTEM_LOG}
+      - Serilog__Properties__ApplicationName=dvc.ctl
+      - Serilog__Using=["Serilog.Sinks.Console","Serilog.Sinks.Debug","Serilog.Sinks.Async","Serilog.Sinks.File"]
+      - Serilog__Enrich=["FromLogContext","WithMachineName","WithThreadId","WithExceptionDetails","WithCorrelationIdHeader"]
+      - Serilog__WriteTo__0__Name=Async
+      - Serilog__WriteTo__0__Args__configure__0__Name=Console
+      - Serilog__WriteTo__0__Args__configure__0__Args__outputTemplate=[{Timestamp:dd-MM-yyyy HH:mm:ss.fff} {Level:u3}] {Message:lj}{NewLine}{Exception}
+      - Serilog__WriteTo__1__Name=Async
+      - Serilog__WriteTo__1__Args__configure__0__Name=File
+      - Serilog__WriteTo__1__Args__configure__0__Args__path=/dvc/logs/ctl/data.log
+      - Serilog__WriteTo__1__Args__configure__0__Args__outputTemplate=[{Timestamp:dd-MM-yyyy HH:mm:ss.fff} {Level:u3}] {Message:lj}{NewLine}{Exception}
+      - Serilog__WriteTo__1__Args__configure__0__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__configure__0__Args__retainedFileCountLimit=30
+      - Serilog__WriteTo__1__Args__configure__0__Args__shared=true
+      - Serilog__WriteTo__1__Args__configure__0__Args__rollOnFileSizeLimit=true
+      - Serilog__WriteTo__1__Args__configure__0__Args__fileSizeLimitBytes=26214400
+      - ElasticsearchOptions__Uri=${ES_URI}
+      - ElasticsearchOptions__User=${ES_USER}
+      - ElasticsearchOptions__Password=${ES_PWD}
+      - ConsulOptions__Enable=false
+      - ConsulOptions__ConsulAddress=http://cmc.ts.consul:8500
+      - ConsulOptions__ServiceAddress=http://ubdt.cmc.ts.dvc.ctl
+      - ConsulOptions__ServiceName=ubdt.cmc.ts.dvc.ctl
+      - ConsulOptions__ServiceId=ubdt.cmc.ts.dvc.ctl
+      - ConsulOptions__DisableAgentCheck=false
+      - ConsulOptions__Tags=[]
+      - SwaggerOptions__VersionName=v1
+      - SwaggerOptions__RoutePrefix=
+      - DatabaseOptions__Provider=${DB_PROVIDER}
+      - DatabaseOptions__ConnectionStrings__${DB_PROVIDER}=Server=${DB_HOST};Port=${DB_PORT};User ID=${DB_USER};Password='${DB_PAS}';Database=${STACK}_ctl;Integrated Security=true;Pooling=true;
+      - JwtTokenConfig__Secret=${JWT_SECRET}
+      - JwtTokenConfig__Issuer=${JWT_ISSUER}
+      - JwtTokenConfig__Audience=${JWT_ISSUER}
+      - JwtTokenConfig__AccessTokenExpiration=${JWT_EXPIRED}
+      - JwtTokenConfig__RefreshTokenExpiration=${JWT_REFRESH}
+      - Api_ExtUnit__Uri=https://mocki.io/v1/ee46703d-9003-43ff-aea0-13f7285b096a
+      - Api_ExtUnit__DayOfHistory=7
+      - Api_ExtUnit__CronExpression=5 4 * * * 
+      - EnableCache=true
+      - Redis__Configuration=${REDIS_CONFIGURATION}
+      - Redis__Instance=ubdt.cmc.ts.dvc.ctl
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - ${LOCATION_MOUNT}/ctl:${LOCATION_ROOT}
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - lab
+  ubdt.cmc.ts.dvc.dms:
+    image: ${DOCKER_REGISTRY}/cmc/ts/dotnet/core/cmc-ts-dvc-dms:latest
+    hostname: ubdt.cmc.ts.dvc.dms
+    container_name: ubdt.cmc.ts.dvc.dms
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${PROFILE}
+      - PORT=3000
+      - DatabaseOptions__Provider=${DB_PROVIDER}
+      - LocationRoot=${LOCATION_ROOT}
+    ports:
+      - 7979:3000
+    networks:
+      - lab
+    volumes:
+      - ${LOCATION_MOUNT}/dms:${LOCATION_ROOT}
+  ubdt.cmc.ts.dvc.ums:
+    image: ${DOCKER_REGISTRY}/cmc/ts/dotnet/core/cmc-ts-dvc-ums:latest-rc
+    hostname: ubdt.cmc.ts.dvc.ums
+    container_name: ubdt.cmc.ts.dvc.ums
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${PROFILE}
+      - AllowedHosts=${ALLOWED_HOSTS}
+      - Serilog__MinimumLevel__Default=${DEFAULT_LOG}
+      - Serilog__MinimumLevel__Override__Microsoft=${MICROSOFT_LOG}
+      - Serilog__MinimumLevel__Override__System=${SYSTEM_LOG}
+      - Serilog__Properties__ApplicationName=ubdt.ums
+      - Serilog__Using=["Serilog.Sinks.Console","Serilog.Sinks.Debug","Serilog.Sinks.Async","Serilog.Sinks.File"]
+      - Serilog__Enrich=["FromLogContext","WithMachineName","WithThreadId","WithExceptionDetails","WithCorrelationIdHeader"]
+      - Serilog__WriteTo__0__Name=Async
+      - Serilog__WriteTo__0__Args__configure__0__Name=Console
+      - Serilog__WriteTo__0__Args__configure__0__Args__outputTemplate=[{Timestamp:dd-MM-yyyy HH:mm:ss.fff} {Level:u3}] {Message:lj}{NewLine}{Exception}
+      - Serilog__WriteTo__1__Name=Async
+      - Serilog__WriteTo__1__Args__configure__0__Name=File
+      - Serilog__WriteTo__1__Args__configure__0__Args__path=/ubdt/logs/ums/data.log
+      - Serilog__WriteTo__1__Args__configure__0__Args__outputTemplate=[{Timestamp:dd-MM-yyyy HH:mm:ss.fff} {Level:u3}] {Message:lj}{NewLine}{Exception}
+      - Serilog__WriteTo__1__Args__configure__0__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__configure__0__Args__retainedFileCountLimit=30
+      - Serilog__WriteTo__1__Args__configure__0__Args__shared=true
+      - Serilog__WriteTo__1__Args__configure__0__Args__rollOnFileSizeLimit=true
+      - Serilog__WriteTo__1__Args__configure__0__Args__fileSizeLimitBytes=26214400
+      - ElasticsearchOptions__Uri=${ES_URI}
+      - ElasticsearchOptions__User=${ES_USER}
+      - ElasticsearchOptions__Password=${ES_PWD}
+      - ConsulOptions__Enable=false
+      - ConsulOptions__ConsulAddress=http://cmc.ts.consul:8500
+      - ConsulOptions__ServiceAddress=http://ubdt.cmc.ts.dvc.ums
+      - ConsulOptions__ServiceName=ubdt.cmc.ts.dvc.ums
+      - ConsulOptions__ServiceId=ubdt.cmc.ts.dvc.ums
+      - ConsulOptions__DisableAgentCheck=false
+      - ConsulOptions__Tags=[]
+      - SwaggerOptions__VersionName=v1
+      - SwaggerOptions__RoutePrefix=
+      - JwtTokenConfig__Secret=${JWT_SECRET}
+      - JwtTokenConfig__Issuer=${JWT_ISSUER}
+      - JwtTokenConfig__Audience=${JWT_ISSUER}
+      - JwtTokenConfig__AccessTokenExpiration=${JWT_EXPIRED}
+      - JwtTokenConfig__RefreshTokenExpiration=${JWT_REFRESH}
+      - RabbitOptions__Host=${RABBIT_HOST}
+      - RabbitOptions__VirtualHost=${RABBIT_VHOST}
+      - RabbitOptions__User=${RABBIT_USER}
+      - RabbitOptions__Password=${RABBIT_PWD}
+      - DatabaseOptions__Provider=${DB_PROVIDER}
+      - DatabaseOptions__ConnectionStrings__${DB_PROVIDER}=Server=${DB_HOST};Port=${DB_PORT};User ID=${DB_USER};Password='${DB_PAS}';Database=${STACK}_ums;Integrated Security=true;Pooling=true;
+      - LocationRoot=/ums
+      - SmtpClient__Host=smtp.gmail.com
+      - SmtpClient__Port=587
+      - SmtpClient__UserName=user@gmail.com
+      - SmtpClient__Password=secure_password
+      - API_GATEWAY=${API_GATEWAY_INTERNAL}
+      - Services__DMS=/dvc/dms/
+      - Services__WFS=/wfs/
+      - Services__CTL=/dvc/ctl/
+      - Services__UMS=/dvc/ums/
+      - Services__CFG=/dvc/cfg/
+      - Services__NOTI=/dvc/notification/
+      - Redis__Configuration=${REDIS_CONFIGURATION}
+      - Redis__Instance=ubdt.cmc.ts.dvc.ums
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - /u01/data/dvc/ums:/ums
+      - /u01/data/logs:/dvc/logs
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+    networks:
+      - lab
+  ubdt.cmc.ts.dvc.wfs:
+    image: ${DOCKER_REGISTRY}/cmc/ts/dotnet/core/cmc-ts-dvc-wfs:latest
+    hostname: ubdt.cmc.ts.dvc.wfs
+    container_name: ubdt.cmc.ts.dvc.wfs
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${PROFILE}
+      - PORT=3000
+      - DatabaseOptions__Provider=${DB_PROVIDER}
+    ports:
+      - 8989:3000
+    networks:
+      - lab
+  ubdt.cmc.ts.mc.biz:
+    image: ${DOCKER_REGISTRY}/cmc/ts/dotnet/core/cmc-ts-mc-biz:latest
+    hostname: ubdt.cmc.ts.mc.biz
+    container_name: ubdt.cmc.ts.mc.biz
+    environment:
+      - ASPNETCORE_ENVIRONMENT=${PROFILE}
+      - PORT=3000
+    networks:
+      - lab
+  ubdt.cmc.ts.dvc:
+    image: ${DOCKER_REGISTRY}/cmc/ts/reactjs/cmc-ts-dvc:latest-rc
+    hostname: ubdt.cmc.ts.dvc
+    container_name: ubdt.cmc.ts.dvc
+    environment:
+      - PROFILE=${PROFILE}
+      - SecurityAPI_URL=http://appdemo.cmcsoft.com:5555/ubdt/sign/
+      - API_URL=http://appdemo.cmcsoft.com:5555/ubdt/dvc/
+      - SERVICE_CFG=CFG/
+      - SERVICE_CTL=ctl/
+      - SERVICE_UMS=ums/
+      - WS_URL=ws://appdemo.cmcsoft.com:5555/ubdt/ws
+      - TIMEOUT=60
+      - USE_CAPTCHA=false
+      - SIGN_OPTION_APP_NAME=MC
+      - SIGN_OPTION_APP_KEY=7445BB6C9F3D474C933F505009F93EF4
+      - HASH_ALG=SHA-256
+      - WITH_TSA=false
+      - TSA_URL=http://ca.gov.vn/tsa
+      - TSA_LOGIN=
+      - TSA_PASS=
+      - HOME_PATH=home/Home
+      - LANDING_PATH=home/todo
+      - LANDING_PARAMS=
+      - CAL_DIRECTION=horizontal
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - /u01/data/dvc/web:/usr/share/nginx/html/assets/brand
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "4402:80"
+    networks:
+      - lab
+  ubdt.cmc.ts.mc:
+    image: ${DOCKER_REGISTRY}/cmc/ts/reactjs/cmc-ts-mc:latest-rc
+    hostname: ubdt.cmc.ts.mc
+    container_name: ubdt.cmc.ts.mc
+    environment:
+      - PROFILE=${PROFILE}
+      - SecurityAPI_URL=http://appdemo.cmcsoft.com:5555/ubdt/sign/
+      - API_URL=http://appdemo.cmcsoft.com:5555/ubdt/dvc/
+      - SERVICE_CFG=CFG/
+      - SERVICE_CTL=ctl/
+      - SERVICE_UMS=ums/
+      - WS_URL=ws://appdemo.cmcsoft.com:5555/ubdt/ws
+      - TIMEOUT=60
+      - USE_CAPTCHA=false
+      - SIGN_OPTION_APP_NAME=MC
+      - SIGN_OPTION_APP_KEY=7445BB6C9F3D474C933F505009F93EF4
+      - HASH_ALG=SHA-256
+      - WITH_TSA=false
+      - TSA_URL=http://ca.gov.vn/tsa
+      - TSA_LOGIN=
+      - TSA_PASS=
+      - HOME_PATH=home/Home
+      - LANDING_PATH=home/todo
+      - LANDING_PARAMS=
+      - CAL_DIRECTION=horizontal
+      - TZ=Asia/Ho_Chi_Minh
+      - HOME_PATH=home/todo
+    volumes:
+      - /u01/data/mc/web:/usr/share/nginx/html/assets/brand
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "4403:80"
+    networks:
+      - lab

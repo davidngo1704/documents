@@ -1,0 +1,25 @@
+version: '3.4'
+
+networks:
+  nat:
+    external:
+      name: cmc
+services:
+  rabbitmq:
+    image: 10.162.80.114:5000/rabbitmq:3.8.9-management
+    restart: always
+    hostname: rabbitmq
+    container_name: rabbitmq
+    environment: 
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=Abcd123$$
+      - TZ=Asia/Ho_Chi_Minh
+    volumes:
+      - /u01/data/rabbitmq/data:/var/lib/rabbitmq
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+    networks:
+      - nat
