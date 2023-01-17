@@ -1,7 +1,7 @@
-//Trên Service tạo SSH Key để vào deploy
+//Trên Server cần SSh đến => tạo SSH Key để vào deploy
 ssh-keygen -t rsa
 
-mkdir authorized_keys
+cd root/.ssh 
 
 cat id_rsa.pub >> authorized_keys
 
