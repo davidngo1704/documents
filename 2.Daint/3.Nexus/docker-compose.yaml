@@ -2,7 +2,7 @@ version: '3.3'
 
 services:
   nexus:
-    image: sonatype/nexus3:latest
+    image: 10.162.80.114:5000/sonatype/nexus3:3.42.0
     restart: always
     volumes:
       - nexus-data:/nexus-data
