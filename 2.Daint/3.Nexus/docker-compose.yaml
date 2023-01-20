@@ -1,5 +1,6 @@
 version: '3.3'
-
+volumes:
+  nexus-data:
 services:
   nexus:
     image: 10.162.80.114:5000/sonatype/nexus3:3.42.0
@@ -9,5 +10,3 @@ services:
     ports:
       - "8081:8081"
       - "8082:8082"
-volumes:
-  nexus-data:
