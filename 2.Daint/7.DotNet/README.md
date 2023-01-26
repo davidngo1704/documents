@@ -1,6 +1,11 @@
 
 1. Add command into Dockerfile
 
+FROM ${DOCKER_REGISTRY}/mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+WORKDIR /app
+COPY fonts/symbol /usr/share/fonts/
+EXPOSE 80
+
 RUN apt-get update \
     && apt-get install -y --allow-unauthenticated \
         libc6-dev \
