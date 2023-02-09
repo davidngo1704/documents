@@ -47,7 +47,7 @@
 
 -- 
 DELETE DOCUMENT_REGISTER
-WHERE CODE IN ('TT-DT', 'TT', 'TT-DT-TCT', 'TT-TCT', 'TT-DT-CDT', 'TT-CDT', 'DE-MH', 'DE-CV', 'DE-MH-CT', 'DE-CV-CT')
+WHERE CODE IN ('TT-DT', 'TT', 'TT-DT-TCT', 'TT-TCT', 'TT-DT-CDT', 'TT-CDT', 'DE-MH', 'DE-CV', 'DE-MH-CT', 'DE-CV-CT', 'TT-TCT-TTB', 'TT-TCT-TTB-DT')
 
 DELETE "Category" 
 WHERE "Code" IN ('CaseDomain', 'ArchiveDuration', 'PhysicalType', 'UsageMode', 'CaseStatusType', 'CaseType', 'SourceTask')
