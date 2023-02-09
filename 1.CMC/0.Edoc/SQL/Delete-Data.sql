@@ -51,8 +51,3 @@ WHERE CODE IN ('TT-DT', 'TT', 'TT-DT-TCT', 'TT-TCT', 'TT-DT-CDT', 'TT-CDT', 'DE-
 
 DELETE "Category" 
 WHERE "Code" IN ('CaseDomain', 'ArchiveDuration', 'PhysicalType', 'UsageMode', 'CaseStatusType', 'CaseType', 'SourceTask')
-
-
-
-
-sudo sh -c "truncate -s 0 /var/lib/docker/containers/*/*-json.log"
