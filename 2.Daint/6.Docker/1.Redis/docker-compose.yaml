@@ -1,11 +1,12 @@
-version: '3.4'
+version: '3.3'
 
-
+volumes:
+  redis:
 services:
   redis:
     image: redis:latest
     container_name: redis
     volumes:
-      - /u01/data/redis/data:/data
+      - redis:/data
     ports:
       - "6379:6379"
