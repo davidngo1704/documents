@@ -1,4 +1,4 @@
-version: '3.4'
+version: '3.3'
 
 volumes:
   rabbitmq:
@@ -11,7 +11,7 @@ services:
     environment: 
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=Davidkmhd!1
-      -RABBITMQ_DEFAULT_VHOST=daint
+      - RABBITMQ_DEFAULT_VHOST=daint
     volumes:
       - rabbitmq:/var/lib/rabbitmq
     ports:
