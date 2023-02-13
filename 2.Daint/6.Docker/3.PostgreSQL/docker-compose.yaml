@@ -1,0 +1,14 @@
+version: '3.3'
+
+services:
+  postgre:
+    image: docker-registry:5000/postgres:12.1
+    hostname: postgre
+    container_name: postgre
+    environment: 
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=Davidkmhd!1
+    volumes:
+      - /home/postgresql:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
