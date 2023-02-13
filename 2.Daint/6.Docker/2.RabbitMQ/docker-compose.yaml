@@ -1,8 +1,10 @@
 version: '3.4'
 
+volumes:
+  rabbitmq:
 services:
   rabbitmq:
-    image: 10.162.80.114:5000/rabbitmq:3.8.9-management
+    image: rabbitmq:3.8.9-management
     restart: always
     hostname: rabbitmq
     container_name: rabbitmq
@@ -10,7 +12,7 @@ services:
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=Davidkmhd!1
     volumes:
-      - /u01/data/rabbitmq/data:/var/lib/rabbitmq
+      - rabbitmq:/var/lib/rabbitmq
     ports:
       - "15672:15672"
       - "5672:5672"
