@@ -4,13 +4,14 @@ volumes:
   rabbitmq:
 services:
   rabbitmq:
-    image: rabbitmq:3.8.9-management
+    image: rabbitmq:3-management
     restart: always
     hostname: rabbitmq
     container_name: rabbitmq
     environment: 
       - RABBITMQ_DEFAULT_USER=admin
       - RABBITMQ_DEFAULT_PASS=Davidkmhd!1
+      -RABBITMQ_DEFAULT_VHOST=daint
     volumes:
       - rabbitmq:/var/lib/rabbitmq
     ports:
