@@ -3,6 +3,7 @@ version: '3.3'
 services:
   postgre:
     image: docker-registry:5000/postgres:12.1
+    restart: always
     hostname: postgre
     container_name: postgre
     environment: 
