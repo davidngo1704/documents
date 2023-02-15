@@ -1,0 +1,740 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "http://ag.ubdt.cmcts.vn"
+  },
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Menus/GetDVCMenus",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.dvc.cfg",
+          "Port": 80
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/CFG/Menus/GetDVCMenus",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.dvc.cfg"
+    },
+    {
+      "DownstreamPathTemplate": "/api/FormDefinition/AnonymousGet",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.dvc.cfg",
+          "Port": 80
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/CFG/FormDefinition/AnonymousGet",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.dvc.cfg"
+    },
+    {
+      "DownstreamPathTemplate": "/api/account/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.dvc.ums",
+          "Port": 80
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/ums/account/login",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.dvc.ums"
+    },
+    {
+      "DownstreamPathTemplate": "/api/account/register",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.dvc.ums",
+          "Port": 80
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/ums/account/register",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.dvc.ums"
+    },
+    {
+      "DownstreamPathTemplate": "/api/account/login-dvc",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.dvc.ums",
+          "Port": 80
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/ums/account/login-dvc",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.dvc.ums"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.dvc.dms",
+          "Port": 3000
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/dms/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "ubdt.cmc.ts.dvc.dms"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.dvc.wfs",
+          "Port": 3000
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/wfs/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.dvc.wfs"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.mc.biz",
+          "Port": 3000
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/mc/biz/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.mc.biz"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.dvc.biz",
+          "Port": 3000
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/biz/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.dvc.biz"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.dvc.ums",
+          "Port": 80
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/ums/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.dvc.ums"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.dvc.ctl",
+          "Port": 80
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/ctl/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.dvc.ctl"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.dvc.cfg",
+          "Port": 80
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/CFG/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.dvc.cfg"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "ubdt.cmc.ts.tms",
+          "Port": 3000
+        }
+      ],
+      "FileCacheOptions": {
+        "TtlSeconds": 10
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "10s",
+        "PeriodTimespan": 10,
+        "Limit": 10
+      },
+      "UpstreamPathTemplate": "/ubdt/dvc/tms/{everything}",
+      "UpstreamHttpMethod": [
+        "GET",
+        "POST",
+        "PUT",
+        "DELETE"
+      ],
+      "SwaggerKey": "ubdt.cmc.ts.tms"
+    },
+    {
+      "DownstreamPathTemplate": "/api/Account/login",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.ums",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/ums/Account/login",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.ums"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.ums",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/ums/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.ums"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.wfs",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/wfs/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.wfs"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.dms",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/dms/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.dms"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.ctl",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/ctl/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.ctl"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.cfg",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/CFG/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.cfg"
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.java.cmc.ts.edoc.doc",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/DOC/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.java.cmc.ts.edoc.doc"
+    },
+
+
+    {
+      "DownstreamPathTemplate": "/api/CalendarEvent/GetEventShowOnEBoard",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.cal",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/cal/CalendarEvent/GetEventShowOnEBoard",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.cal"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.cal",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/cal/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.cal"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.rpt",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/rpt/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.rpt"
+    },
+    {
+      "DownstreamPathTemplate": "/ws",
+      "DownstreamScheme": "ws",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.notification",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/ws",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.notification"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.notification",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/notification/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.notification"
+    },
+    {
+      "DownstreamPathTemplate": "/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.eventprocessing",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/wfsevt/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.evt"
+    },
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.cmc.ts.edoc.integrate.hub",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/Integrate/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.cmc.ts.edoc.integrate.hub"
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "ubdt.cmc.ts.tms",
+      "Config": [
+        {
+          "Name": "ubdt.cmc.ts.tms api",
+          "Version": "v1",
+          "Url": "http://ubdt.cmc.ts.tms:3000/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ubdt.cmc.ts.dvc.cfg",
+      "Config": [
+        {
+          "Name": "ubdt.cmc.ts.dvc.cfg api",
+          "Version": "v1",
+          "Url": "http://ubdt.cmc.ts.dvc.cfg/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ubdt.cmc.ts.mc.biz",
+      "Config": [
+        {
+          "Name": "ubdt.cmc.ts.mc.biz api",
+          "Version": "v1",
+          "Url": "http://ubdt.cmc.ts.mc.biz:3000/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ubdt.cmc.ts.dvc.biz",
+      "Config": [
+        {
+          "Name": "ubdt.cmc.ts.dvc.biz api",
+          "Version": "v1",
+          "Url": "http://ubdt.cmc.ts.dvc.biz:3000/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ubdt.cmc.ts.dvc.ums",
+      "Config": [
+        {
+          "Name": "ubdt.cmc.ts.dvc.ums api",
+          "Version": "v1",
+          "Url": "http://ubdt.cmc.ts.dvc.ums/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ubdt.cmc.ts.dvc.ctl",
+      "Config": [
+        {
+          "Name": "ubdt.cmc.ts.dvc.ctl api",
+          "Version": "v1",
+          "Url": "http://ubdt.cmc.ts.dvc.ctl/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ubdt.cmc.ts.dvc.dms",
+      "Config": [
+        {
+          "Name": "ubdt.cmc.ts.dvc.dms api",
+          "Version": "v1",
+          "Url": "http://ubdt.cmc.ts.dvc.dms:3000/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "ubdt.cmc.ts.dvc.wfs",
+      "Config": [
+        {
+          "Name": "ubdt.cmc.ts.dvc.wfs api",
+          "Version": "v1",
+          "Url": "http://ubdt.cmc.ts.dvc.wfs:3000/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.cmc.ts.edoc.ums",
+      "Config": [
+        {
+          "Name": "kbnn.cmc.ts.edoc.ums api",
+          "Version": "v1",
+          "Url": "http://kbnn.cmc.ts.edoc.ums/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.cmc.ts.edoc.wfs",
+      "Config": [
+        {
+          "Name": "kbnn.cmc.ts.edoc.wfs api",
+          "Version": "v1",
+          "Url": "http://kbnn.cmc.ts.edoc.wfs/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.cmc.ts.edoc.dms",
+      "Config": [
+        {
+          "Name": "kbnn.cmc.ts.edoc.dms api",
+          "Version": "v1",
+          "Url": "http://kbnn.cmc.ts.edoc.dms/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.cmc.ts.edoc.ctl",
+      "Config": [
+        {
+          "Name": "kbnn.cmc.ts.edoc.ctl api",
+          "Version": "v1",
+          "Url": "http://kbnn.cmc.ts.edoc.ctl/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.cmc.ts.edoc.cfg",
+      "Config": [
+        {
+          "Name": "kbnn.cmc.ts.edoc.cfg api",
+          "Version": "v1",
+          "Url": "http://kbnn.cmc.ts.edoc.cfg/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.cmc.ts.edoc.doc",
+      "Config": [
+        {
+          "Name": "kbnn.cmc.ts.edoc.doc api",
+          "Version": "v1",
+          "Url": "http://kbnn.cmc.ts.edoc.doc/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.cmc.ts.edoc.cal",
+      "Config": [
+        {
+          "Name": "kbnn.cmc.ts.edoc.cal api",
+          "Version": "v1",
+          "Url": "http://kbnn.cmc.ts.edoc.cal/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.cmc.ts.edoc.rpt",
+      "Config": [
+        {
+          "Name": "kbnn.cmc.ts.edoc.rpt api",
+          "Version": "v1",
+          "Url": "http://kbnn.cmc.ts.edoc.rpt/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.cmc.ts.edoc.notification",
+      "Config": [
+        {
+          "Name": "kbnn.cmc.ts.edoc.notification api",
+          "Version": "v1",
+          "Url": "http://kbnn.cmc.ts.edoc.notification/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.cmc.ts.edoc.evt",
+      "Config": [
+        {
+          "Name": "kbnn.cmc.ts.edoc.evt api",
+          "Version": "v1",
+          "Url": "http://kbnn.cmc.ts.edoc.eventprocessing/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.cmc.ts.edoc.integrate.hub",
+      "Config": [
+        {
+          "Name": "kbnn.cmc.ts.edoc.integrate.hub api",
+          "Version": "v1",
+          "Url": "http://kbnn.cmc.ts.edoc.integrate.hub/swagger/v1/swagger.json"
+        }
+      ]
+    },
+    {
+      "Key": "kbnn.java.cmc.ts.edoc.doc",
+      "Config": [
+        {
+          "Name": "kbnn.java.cmc.ts.edoc.doc api",
+          "Version": "v1",
+          "Url": "http://kbnn.java.cmc.ts.edoc.doc/api/v2/api-docs"
+        }
+      ]
+    },
+  ]
+}
