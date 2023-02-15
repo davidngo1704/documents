@@ -406,13 +406,13 @@
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "kbnn.cmc.ts.edoc.ctl",
+          "Host": "kbnn.java.cmc.ts.ctl",
           "Port": 80
         }
       ],
       "UpstreamPathTemplate": "/kbnn/edoc/ctl/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
-      "SwaggerKey": "kbnn.cmc.ts.edoc.ctl"
+      "SwaggerKey": "kbnn.java.cmc.ts.ctl"
     },
     {
       "DownstreamPathTemplate": "/api/{everything}",
@@ -736,5 +736,15 @@
         }
       ]
     },
+    {
+      "Key": "kbnn.java.cmc.ts.ctl",
+      "Config": [
+        {
+          "Name": "kbnn.java.cmc.ts.ctl api",
+          "Version": "v1",
+          "Url": "http://kbnn.java.cmc.ts.ctl/api/v2/api-docs"
+        }
+      ]
+    }
   ]
 }
