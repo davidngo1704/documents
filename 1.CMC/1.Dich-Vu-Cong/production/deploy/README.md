@@ -9,3 +9,13 @@ docker load < cmc-ts-mc.tar
 docker load < cmc-ts-mc-biz.tar
 docker load < cmc-ts-tms.tar
 
+docker tag 10.162.80.114:5000/cmc/ts/reactjs/cmc-ts-dvc:latest-rc  <>/cmc/ts/reactjs/cmc-ts-dvc:latest-rc
+docker tag 10.162.80.114:5000/cmc/ts/reactjs/cmc-ts-mc:latest-rc <>/cmc/ts/reactjs/cmc-ts-mc:latest-rc
+docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-tms:latest <>/cmc/ts/dotnet/core/cmc-ts-tms:latest
+docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-ctl:latest-rc <>/cmc/ts/dotnet/core/cmc-ts-dvc-ctl:latest-rc
+docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-mc-biz:latest <>/cmc/ts/dotnet/core/cmc-ts-mc-biz:latest
+docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-wfs:latest <>/cmc/ts/dotnet/core/cmc-ts-dvc-wfs:latest
+docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-ums:latest-rc <>/cmc/ts/dotnet/core/cmc-ts-dvc-ums:latest-rc
+docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-dms:latest <>/cmc/ts/dotnet/core/cmc-ts-dvc-dms:latest
+docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-cfg:latest-rc <>/cmc/ts/dotnet/core/cmc-ts-dvc-cfg:latest-rc
+docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-biz:latest <>/cmc/ts/dotnet/core/cmc-ts-dvc-biz:latest
