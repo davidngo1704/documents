@@ -19,3 +19,14 @@ docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-ums:latest-rc regist
 docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-dms:latest registry.cema.gov.vn/kien/cmc/ts/dotnet/core/cmc-ts-dvc-dms:latest-rc
 docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-cfg:latest-rc registry.cema.gov.vn/kien/cmc/ts/dotnet/core/cmc-ts-dvc-cfg:latest-rc
 docker tag 10.162.80.114:5000/cmc/ts/dotnet/core/cmc-ts-dvc-biz:latest registry.cema.gov.vn/kien/cmc/ts/dotnet/core/cmc-ts-dvc-biz:latest-rc
+
+docker push registry.cema.gov.vn/kien/cmc/ts/reactjs/cmc-ts-dvc:latest-rc
+docker push registry.cema.gov.vn/kien/cmc/ts/reactjs/cmc-ts-mc:latest-rc
+docker push registry.cema.gov.vn/kien/cmc/ts/dotnet/core/cmc-ts-tms:latest-rc
+docker push registry.cema.gov.vn/kien/cmc/ts/dotnet/core/cmc-ts-dvc-ctl:latest-rc
+docker push registry.cema.gov.vn/kien/cmc/ts/dotnet/core/cmc-ts-mc-biz:latest-rc
+docker push registry.cema.gov.vn/kien/cmc/ts/dotnet/core/cmc-ts-dvc-wfs:latest-rc
+docker push registry.cema.gov.vn/kien/cmc/ts/dotnet/core/cmc-ts-dvc-ums:latest-rc
+docker push registry.cema.gov.vn/kien/cmc/ts/dotnet/core/cmc-ts-dvc-dms:latest-rc
+docker push registry.cema.gov.vn/kien/cmc/ts/dotnet/core/cmc-ts-dvc-cfg:latest-rc
+docker push registry.cema.gov.vn/kien/cmc/ts/dotnet/core/cmc-ts-dvc-biz:latest-rc
