@@ -311,6 +311,34 @@
       "SwaggerKey": "kbnn.java.cmc.ts.ctl"
     },
 
+
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.java.cmc.ts.edoc.hub",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/Integrate/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.java.cmc.ts.edoc.hub"
+    },
+
+    {
+      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "kbnn.java.cmc.ts.edoc.evt",
+          "Port": 80
+        }
+      ],
+      "UpstreamPathTemplate": "/kbnn/edoc/wfsevt/{everything}",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+      "SwaggerKey": "kbnn.java.cmc.ts.edoc.evt"
+    },
     
 
     {
