@@ -392,32 +392,6 @@
       "UpstreamPathTemplate": "/kbnn/edoc/notification/{everything}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
       "SwaggerKey": "kbnn.cmc.ts.edoc.notification"
-    },
-    {
-      "DownstreamPathTemplate": "/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "kbnn.cmc.ts.edoc.eventprocessing",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/kbnn/edoc/wfsevt/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
-      "SwaggerKey": "kbnn.cmc.ts.edoc.evt"
-    },
-    {
-      "DownstreamPathTemplate": "/api/{everything}",
-      "DownstreamScheme": "http",
-      "DownstreamHostAndPorts": [
-        {
-          "Host": "kbnn.cmc.ts.edoc.integrate.hub",
-          "Port": 80
-        }
-      ],
-      "UpstreamPathTemplate": "/kbnn/edoc/Integrate/{everything}",
-      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
-      "SwaggerKey": "kbnn.cmc.ts.edoc.integrate.hub"
     }
   ],
   "SwaggerEndPoints": [
@@ -602,12 +576,12 @@
       ]
     },
     {
-      "Key": "kbnn.cmc.ts.edoc.integrate.hub",
+      "Key": "kbnn.java.cmc.ts.edoc.hub",
       "Config": [
         {
-          "Name": "kbnn.cmc.ts.edoc.integrate.hub api",
+          "Name": "kbnn.java.cmc.ts.edoc.hub api",
           "Version": "v1",
-          "Url": "http://kbnn.cmc.ts.edoc.integrate.hub/swagger/v1/swagger.json"
+          "Url": "http://kbnn.java.cmc.ts.edoc.hub/swagger/v1/swagger.json"
         }
       ]
     }
