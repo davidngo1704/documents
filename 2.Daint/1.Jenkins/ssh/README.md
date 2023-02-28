@@ -11,6 +11,7 @@ Manage Jenkins => credentials => System => Global credentials (unrestricted) =>
 Add Credentials => SSH Username with private key => Nhập Private key vào.
 
 // Cài SSH-Agent
+// Cài Gitlab
 
 sshagent (credentials: ['ssh-services']) {
             sh 'ssh -o StrictHostKeyChecking=no -l root 10.192.0.169 pwd'
