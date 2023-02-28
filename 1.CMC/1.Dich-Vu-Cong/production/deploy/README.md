@@ -1,3 +1,14 @@
+
+
+docker save 10.162.80.114:5000/cmc/ts/reactjs/cmc-ts-dvc:latest-rc > cmc-ts-dvc.tar
+
+docker save 10.162.80.114:5000/cmc/ts/reactjs/cmc-ts-mc:latest-rc > cmc-ts-mc.tar
+
+docker save 10.162.80.114:5000/cmc/ts/reactjs/cmc-ts-mc:latest-rc > cmc-ts-mc.tar
+
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
 docker load < cmc-ts-dvc.tar
 docker load < cmc-ts-dvc-biz.tar
 docker load < cmc-ts-dvc-cfg.tar
