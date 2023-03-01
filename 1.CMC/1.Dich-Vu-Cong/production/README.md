@@ -9,4 +9,4 @@ Ubdt@2022
 root/Ubdt@2022
 ----------------
 
-docker stop --time=30 ubdt.cmc.ts.dvc.wfs
+docker stop ubdt.cmc.ts.dvc.wfs && docker start ubdt.cmc.ts.dvc.wfs
