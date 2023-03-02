@@ -1,9 +1,7 @@
 
 1. Login
 
-cat /daint/secret/password-gitlab-registry.txt | docker login registry.gitlab.com --username davidngo1704 --password-stdin
-
-docker login registry.gitlab.com --username davidngo1704 -p glpat-eRZ-MhKyHyvJWs1-scXK
+docker login registry.gitlab.com --username thomasmuller174 -p glpat-Y1keN8x9FKdiQnbMAL_R
 
 2. Push
 
