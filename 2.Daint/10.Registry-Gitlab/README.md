@@ -9,6 +9,3 @@ docker tag current-image-name registry.gitlab.com/<namespace>/<project>/<image>
 
 docker push registry.gitlab.com/<namespace>/<project>/<image>
 
-3. Delete
-
-
