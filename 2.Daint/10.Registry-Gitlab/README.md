@@ -1,0 +1,1 @@
+cat /daint/secret/password-gitlab-registry.txt | docker login registry.gitlab.com --username davidngo1704 --password-stdin
