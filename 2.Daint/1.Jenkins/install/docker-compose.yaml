@@ -9,6 +9,8 @@ services:
     user: root
     ports:
       - 8080:8080
+    environment:
+      - TZ=Asia/Ho_Chi_Minh
     volumes:
       - /usr/bin/kubectl:/usr/bin/kubectl
       - /usr/bin/docker:/usr/bin/docker
