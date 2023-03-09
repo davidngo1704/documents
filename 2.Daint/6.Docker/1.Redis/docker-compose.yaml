@@ -3,6 +3,11 @@ version: '3.3'
 volumes:
   redis:
 
+networks:
+  default:
+    external:
+      name: bridge
+
 services:
   redis:
     image: redis:latest
@@ -13,8 +18,4 @@ services:
     ports:
       - "6379:6379"
     networks:
-      - daint-network-system
-
-networks:
-  daint-network-system:
-    driver: bridge
+      - default
