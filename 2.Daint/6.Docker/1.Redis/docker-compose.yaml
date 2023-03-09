@@ -1,8 +1,6 @@
 version: '3.3'
 
-networks:
-  daint-network-system:
-    driver: bridge
+
 
 volumes:
   redis:
@@ -18,3 +16,7 @@ services:
       - "6379:6379"
     networks:
       - daint-network-system
+
+networks:
+  daint-network-system:
+    driver: bridge
