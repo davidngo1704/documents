@@ -1,8 +1,9 @@
 version: '3.3'
 
 networks:
-  daint-network-system:
-    driver: bridge
+  default:
+    external:
+      name: daint-network
 
 services:
   postgre:
@@ -18,4 +19,4 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - daint-network-system
+      - default
