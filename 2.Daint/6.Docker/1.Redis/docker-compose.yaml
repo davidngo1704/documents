@@ -5,8 +5,8 @@ volumes:
 
 networks:
   default:
-    external:
-      name: daint-network
+    name: daint-network
+    external: true
 
 services:
   redis:

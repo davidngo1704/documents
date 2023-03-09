@@ -2,8 +2,9 @@ version: '3.3'
 
 networks:
   default:
-    external:
-      name: daint-network
+    name: daint-network
+    external: true
+      
 
 services:
   postgre:
