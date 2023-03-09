@@ -14,7 +14,6 @@ services:
     volumes:
       - /usr/bin/kubectl:/usr/bin/kubectl
       - /usr/bin/docker:/usr/bin/docker
-      - /usr/bin/telnet:/usr/bin/telnet
       - /var/run/docker.sock:/var/run/docker.sock
       - /root/jenkins_home:/var/jenkins_home
       - /etc/hosts:/etc/hosts:ro
