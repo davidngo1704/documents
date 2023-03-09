@@ -1,7 +1,12 @@
 version: '3.3'
 
+networks:
+  daint-network-system:
+    driver: bridge
+
 volumes:
   redis:
+
 services:
   redis:
     image: redis:latest
@@ -11,3 +16,5 @@ services:
       - redis:/data
     ports:
       - "6379:6379"
+    networks:
+      - daint-network-system
