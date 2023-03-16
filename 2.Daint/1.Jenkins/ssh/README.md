@@ -14,5 +14,6 @@ Add Credentials => SSH Username with private key => Nhập Private key vào.
 // Cài Gitlab
 
 sshagent (credentials: ['ssh-services']) {
-            sh 'ssh -o StrictHostKeyChecking=no -l root 10.192.0.169 pwd'
-        }
+    sh "scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./DevOps/cd/script-deploy.sh root@${REMOTE_SERVER}:/root/script-deploy.sh"
+	sh "ssh -o StrictHostKeyChecking=no -l root ${REMOTE_SERVER} bash script-deploy.sh"
+}
