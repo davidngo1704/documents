@@ -422,6 +422,10 @@
                         "header": "Tên giấy tờ"
                       },
                       {
+                        "field": "Code",
+                        "header": "Mã giấy tờ"
+                      },
+                      {
                         "field": "OriginCount",
                         "header": "Số bản chính"
                       },
