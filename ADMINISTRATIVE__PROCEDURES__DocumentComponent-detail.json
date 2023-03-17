@@ -7,6 +7,12 @@
               "ControlClass": "p-col-10"
          },
          {
+               "Name": "Code",
+               "Title": "Mã giấy tờ",
+               "Control": 10,
+               "ControlClass": "p-col-10"
+         },
+         {
               "Name": "OriginCount",
               "Title": "Số bản chính",
               "Control": 12,
