@@ -2,8 +2,13 @@ version: '3.3'
 
 networks:
   default:
-    name: daint-network
-    external: true
+    external:
+      name: daint-network
+
+# networks:
+#   default:
+#     name: daint-network
+#     external: true
 
 services:
   neo4j:
