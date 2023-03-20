@@ -1,7 +1,7 @@
 version: '3.3'
 
 services:
-  registry:
+  neo4j:
     image: neo4j
     restart: always
     volumes:
