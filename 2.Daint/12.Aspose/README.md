@@ -1,1 +1,1 @@
-Insert => Quick Parts => 
+Insert => Quick Parts => Field => Trong danh sách, Chọn MergeField
