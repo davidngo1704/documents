@@ -16,3 +16,13 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 /root/.fly/bin/flyctl launch --image davidngo1704/task:latest
 
 /root/.fly/bin/flyctl launch --image davidngo1704/workflow:latest
+
+#---------------------------------------------------------------
+
+fly secrets set ASPNETCORE_ENVIRONMENT=Development
+fly launch --image davidngo1704/api-gateway:latest
+fly launch --image davidngo1704/authentication-api:latest
+fly launch --image davidngo1704/configuration-api:latest
+fly launch --image davidngo1704/main-api:latest
+fly launch --image davidngo1704/task:latest
+fly launch --image davidngo1704/workflow:latest
