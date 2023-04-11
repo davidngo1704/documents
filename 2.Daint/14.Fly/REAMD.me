@@ -3,10 +3,6 @@ export FLYCTL_INSTALL="/root/.fly"
 
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
-fly secrets set PORT=8080
-
-fly volume create api_gateway --size 1
-
 /root/.fly/bin/flyctl launch --image davidngo1704/api-gateway:latest
 
 /root/.fly/bin/flyctl launch --image davidngo1704/authentication-api:latest
