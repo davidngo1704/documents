@@ -1,6 +1,6 @@
 # fly.toml file generated for quiet-shape-605 on 2023-04-11T22:39:06+07:00
 
-app = "young-leaf-9387"
+app = "empty-darkness-8835"
 kill_signal = "SIGINT"
 kill_timeout = 5
 mounts = []
@@ -8,7 +8,7 @@ primary_region = "sin"
 processes = []
 
 [build]
-  image = "davidngo1704/workflow:latest"
+  image = "davidngo1704/api-gateway:latest"
 
 [[services]]
   internal_port = 8080
