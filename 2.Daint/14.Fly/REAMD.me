@@ -31,9 +31,7 @@ fly launch --image davidngo1704/workflow:latest
 
 fly volumes create configuration_data --size 3 --app purple-star-1203
 
-fly volumes create api_gateway_data --size 1 --app purple-star-1203
-
-fly volumes create main_data --size 1 --app purple-star-1203
+fly volumes create main_data --size 2 --app purple-star-1203
 
 fly volumes create task_data --size 1 --app purple-star-1203
 
