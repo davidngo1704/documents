@@ -27,3 +27,7 @@ processes = []
   [[services.ports]]
     handlers = ["tls", "http"]
     port = 443
+
+[mounts]
+source="api_gateway_data"
+destination="/location-root"
