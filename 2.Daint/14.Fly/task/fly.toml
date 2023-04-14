@@ -10,6 +10,13 @@ processes = []
 [build]
   image = "davidngo1704/task:latest"
 
+[env]
+PORT = "8080
+
+[mounts]
+source="task_data"
+destination="/location-root"
+
 [[services]]
   internal_port = 8080
   processes = ["app"]
@@ -28,6 +35,3 @@ processes = []
     handlers = ["tls", "http"]
     port = 443
 
-[mounts]
-source="task_data"
-destination="/location-root"
