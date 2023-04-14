@@ -42,10 +42,14 @@ fly volumes create task_data --size 1 --app purple-star-1203
 
 /root/.fly/bin/flyctl volumes create main_data --size 2 --app muddy-thunder-2911
 
-/root/.fly/bin/flyctl volumes create task_data --size 1 --app purple-star-1203
+/root/.fly/bin/flyctl volumes create task_data --size 1 --app quiet-shape-605
 
 /root/.fly/bin/flyctl volumes create main_data --yes --size 2
 
 /root/.fly/bin/flyctl volumes create task_data --yes --size 1
 
 /root/.fly/bin/flyctl deploy
+
+--------------------------------------------------------------------
+
+fly ssh console -s
