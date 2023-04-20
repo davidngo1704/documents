@@ -2,4 +2,3 @@ token: 1//0eHi_qtGKA0jyCgYIARAAGA4SNwF-L9IrvCB4Akp4C8y-63jQGxVoiQYumJExhkAUfnjmG
 
 firebase projects:list --token "1//0eHi_qtGKA0jyCgYIARAAGA4SNwF-L9IrvCB4Akp4C8y-63jQGxVoiQYumJExhkAUfnjmG7RMTDUy9BtpX8hfNb9YySrVaB_vlps"
 
-Example: firebase deploy --token "1//0eHi_qtGKA0jyCgYIARAAGA4SNwF-L9IrvCB4Akp4C8y-63jQGxVoiQYumJExhkAUfnjmG7RMTDUy9BtpX8hfNb9YySrVaB_vlps"
