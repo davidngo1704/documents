@@ -8,7 +8,7 @@ networks:
 
 services:
   postgre:
-    image: postgres
+    image: postgres:latest
     restart: always
     hostname: postgre
     container_name: postgre
