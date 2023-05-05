@@ -3,7 +3,7 @@ volumes:
   registry:
 services:
   registry:
-    image: registry
+    image: registry:latest
     restart: always
     volumes:
       - registry:/var/lib/registry
