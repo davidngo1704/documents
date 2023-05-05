@@ -5,9 +5,6 @@ networks:
     name: daint-network
     external: true
 
-volumes:
-  rabbitmq:
-
 services:
   rabbitmq:
     image: rabbitmq:3-management
@@ -19,7 +16,7 @@ services:
       - RABBITMQ_DEFAULT_PASS=Davidkmhd!1
       - RABBITMQ_DEFAULT_VHOST=daint
     volumes:
-      - rabbitmq:/var/lib/rabbitmq
+      - /mnt/d/daint/rabbitmq:/var/lib/rabbitmq
     ports:
       - "15672:15672"
       - "5672:5672"

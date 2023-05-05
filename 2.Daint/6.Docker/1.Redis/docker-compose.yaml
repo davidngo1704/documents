@@ -1,8 +1,5 @@
 version: '3.3'
 
-volumes:
-  redis:
-
 networks:
   default:
     name: daint-network
@@ -14,7 +11,7 @@ services:
     restart: always
     container_name: redis
     volumes:
-      - redis:/data
+      - /mnt/d/daint/redis:/data
     ports:
       - "6379:6379"
     networks:
