@@ -1,6 +1,10 @@
 version: '3.3'
-volumes:
-  nexus-data:
+
+networks:
+  default:
+    name: daint-network
+    external: true
+
 services:
   nexus:
     image: sonatype/nexus3:latest
@@ -9,3 +13,5 @@ services:
       - /mnt/d/daint/nexus:/nexus-data
     ports:
       - "8081:8081"
+    networks:
+      - default
