@@ -1,7 +1,7 @@
 
 Bước 1: Gitlab => Profile Edit => Access Token => gitlab token: glpat-8sUxeVcxdvqnskmptC4B
 
-Bước 2: Jenkin => Profile User => Configure => API token => jenkin token: 113a224c17f6cdc810d9c0168da41cfc15
+Bước 2: Jenkin => Profile User => Configure => API token => jenkin token: 11314cb7e2609e9221abc92de88cbc199c
 
 Bước 3: Cấu hình Credential (http://10.192.0.150:8080/manage/configure)
 - Manage jenkin => Configure system => Có section Gitlab => Name: <gì-cũng-được>, host: https://gitlab.com
