@@ -1,1 +1,0 @@
-/nexus-data/admin.password
