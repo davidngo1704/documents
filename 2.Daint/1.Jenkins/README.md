@@ -1,5 +1,5 @@
 
-Bước 1: Gitlab => Profile Edit => Access Token => gitlab token: UR1ytQxY4whzSKEA-3HX
+Bước 1: Gitlab => Profile Edit => Access Token => gitlab token: glpat-8sUxeVcxdvqnskmptC4B
 
 Bước 2: Jenkin => Profile User => Configure => API token => jenkin token: 113a224c17f6cdc810d9c0168da41cfc15
 
