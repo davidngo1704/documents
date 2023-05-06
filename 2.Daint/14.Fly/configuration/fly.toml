@@ -1,6 +1,6 @@
-# fly.toml file generated for quiet-shape-605 on 2023-04-11T22:39:06+07:00
+# fly.toml file generated for autumn-flower-470 on 2023-04-15T00:44:57-04:00
 
-app = "purple-star-1203"
+app = "autumn-flower-470"
 kill_signal = "SIGINT"
 kill_timeout = 5
 mounts = []
