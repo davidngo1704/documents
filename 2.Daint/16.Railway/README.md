@@ -6,6 +6,8 @@ railway login --browserless
 
 railway link
 
+// Chú ý, đứng ở folder có docker file
+
 railway up
 
 //Install Node
