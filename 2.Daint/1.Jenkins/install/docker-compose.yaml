@@ -18,7 +18,7 @@ services:
       - /usr/bin/kubectl:/usr/bin/kubectl
       - /usr/bin/docker:/usr/bin/docker
       - /var/run/docker.sock:/var/run/docker.sock
-      - jenkins:/var/jenkins_home
+      - /home/data/jenkins:/var/jenkins_home
       - /etc/hosts:/etc/hosts:ro
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/localtime:/etc/localtime:ro
