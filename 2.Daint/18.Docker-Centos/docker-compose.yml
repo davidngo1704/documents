@@ -1,0 +1,21 @@
+version: '3.8'
+
+volumes:
+  jenkins:
+
+services:
+  jenkins:
+    container_name: my-centos-7
+    restart: always
+    image: my-centos-7
+    privileged: true
+    user: root
+    ports:
+      - 5678:80
+    volumes:
+      - /usr/bin/docker:/usr/bin/docker
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /etc/hosts:/etc/hosts:ro
+      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
