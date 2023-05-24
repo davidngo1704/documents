@@ -1,6 +1,6 @@
 etc/docker/daemon.json
 
-"insecure-registries":["192.168.1.150:5000"]
+"insecure-registries":["10.162.80.114:5000"]
 
 sudo service docker restart
 
