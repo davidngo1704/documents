@@ -1,3 +1,1 @@
-cd /home/fly/main
-
-/root/.fly/bin/flyctl deploy
+cd /home/fly/main && /root/.fly/bin/flyctl deploy
