@@ -4,7 +4,7 @@ services:
   jenkins:
     container_name: my-centos-7
     restart: always
-    image: my-centos-7
+    image: 127.0.0.1:5000/my-centos-7
     privileged: true
     user: root
     ports:
