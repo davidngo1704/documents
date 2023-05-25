@@ -4,7 +4,7 @@ services:
   jenkins:
     container_name: my-centos-7
     restart: always
-    image: 127.0.0.1:5000/my-centos-7
+    image: 127.0.0.1:5000/my-centos-7:fly
     privileged: true
     user: root
     ports:
@@ -13,6 +13,7 @@ services:
       - /usr/bin/docker:/usr/bin/docker
       - /var/run/docker.sock:/var/run/docker.sock
       - /etc/hosts:/etc/hosts:ro
+      - /home/data/centos:/home/data
       - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
       - /etc/localtime:/etc/localtime:ro
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
