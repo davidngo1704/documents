@@ -6,4 +6,6 @@ services:
     restart: always
     image: 127.0.0.1:5000/centos-fly
     volumes:
-      - /home/data/centos:/home/data
+      - /home/data/centos/config-fly:/home/fly
+      - /home/data/centos/script-apigateway.sh:/script-apigateway.sh
+      - /home/data/centos/script-main.sh:/script-main.sh
