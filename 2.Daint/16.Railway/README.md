@@ -12,6 +12,8 @@ railway up
 
 //Install Node
 
-curl -s https://deb.nodesource.com/setup_16.x | sudo bash
+curl -fsSL https://rpm.nodesource.com/setup_16.x | sudo bash -
 
-sudo apt install nodejs -y
+sudo yum install -y nodejs
+
+npm install -g firebase-tools
