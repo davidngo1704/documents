@@ -1,8 +1,5 @@
 version: '3.8'
 
-volumes:
-  jenkins:
-
 services:
   jenkins:
     container_name: my-centos-7
