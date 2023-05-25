@@ -1,4 +1,9 @@
 docker build --rm -t my-centos-7 .
 
+docker run 127.0.0.1:5000/centos-fly
 
-docker run -ti -v /sys/fs/cgroup:/sys/fs/cgroup:ro -p 5678:80 my-centos-7
+docker exec centos-fly bash script-main.sh
+
+docker exec centos-fly bash script-apigateway.sh
+
+docker container exec -it centos-fly /bin/bash

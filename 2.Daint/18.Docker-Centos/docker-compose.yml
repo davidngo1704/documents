@@ -1,21 +1,11 @@
 version: '3.8'
 
-volumes:
-  jenkins:
-
 services:
   jenkins:
-    container_name: my-centos-7
+    container_name: centos-fly
     restart: always
-    image: my-centos-7
-    privileged: true
-    user: root
-    ports:
-      - 5678:80
+    image: 127.0.0.1:5000/centos-fly
     volumes:
-      - /usr/bin/docker:/usr/bin/docker
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /etc/hosts:/etc/hosts:ro
-      - /usr/share/zoneinfo:/usr/share/zoneinfo:ro
-      - /etc/localtime:/etc/localtime:ro
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /home/data/centos/config-fly:/home/fly
+      - /home/data/centos/script-apigateway.sh:/script-apigateway.sh
+      - /home/data/centos/script-main.sh:/script-main.sh
