@@ -1,0 +1,240 @@
+version: '3.4'
+
+networks:
+  default:
+    name: daint-network
+    external: true
+
+services:
+
+  main.web:
+    image: davidngo1704/main-web:latest
+    container_name: main.web
+    restart: always
+    environment:
+      - PROFILE=production
+      - API_URL=http://localhost:9999/
+    ports:
+      - 80:80
+
+  apigateway:
+    image: davidngo1704/api-gateway:latest
+    container_name: apigateway
+    restart: always
+    environment:
+      - WebServerOptions__MaxRequestBodySize=262144000
+      - Jwt__ProviderKey=Dai-Provider
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - PORT=80
+      - IsUseLocalConfig=false
+    volumes:
+      - /mnt/d/daint/apigateway:/app/config
+    ports:
+      - 9999:80
+    networks:
+      - default
+
+  authentication.api:
+    image: davidngo1704/authentication-api:latest
+    container_name: authentication.api
+    restart: always
+    environment:
+      - AllowedHosts=*
+      - Serilog__MinimumLevel=Information
+      - Serilog__WriteTo__0__Name=Console
+      - Serilog__WriteTo__1__Name=File
+      - Serilog__WriteTo__1__Args__outputTemplate={Timestamp:HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception}
+      - Serilog__WriteTo__1__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
+      - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=authentication;Integrated Security=true;Pooling=true;
+      - RabbitOptions__Host=192.168.1.150:5672
+      - RabbitOptions__VirtualHost=daint
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Davidkmhd!1
+      - RabbitOptions__Enable=false
+      - LocationRoot=/location-root
+      - CryptographyKey=12345678876543211234567887654321
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - Jwt__AccessTokenExpire=120
+      - Jwt__RefreshTokenExpire=24
+      - Redis__Configuration=us1-full-piglet-38019.upstash.io:38019,password=a7ec26fc8b0e4689a878d418d0d98377
+      - Redis__DbId=1
+      - EnableCache=false
+      - ApiGateway=apigateway
+      - TimeZoneId=SE Asia Standard Time
+      - ApiKey=Cts@1234
+      - PORT=80
+    volumes:
+      - /mnt/d/daint/authentication:/location-root
+    networks:
+      - default
+
+  configuration.api:
+    image: davidngo1704/configuration-api:latest
+    container_name: configuration.api
+    restart: always
+    environment:
+      - AllowedHosts=*
+      - Serilog__MinimumLevel=Information
+      - Serilog__WriteTo__0__Name=Console
+      - Serilog__WriteTo__1__Name=File
+      - Serilog__WriteTo__1__Args__outputTemplate={Timestamp:HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception}
+      - Serilog__WriteTo__1__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
+      - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=configuration;Integrated Security=true;Pooling=true;
+      - RabbitOptions__Host=192.168.1.150:5672
+      - RabbitOptions__VirtualHost=daint
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Davidkmhd!1
+      - RabbitOptions__Enable=false
+      - LocationRoot=/location-root
+      - CryptographyKey=12345678876543211234567887654321
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - Jwt__AccessTokenExpire=120
+      - Jwt__RefreshTokenExpire=24
+      - Redis__Configuration=us1-full-piglet-38019.upstash.io:38019,password=a7ec26fc8b0e4689a878d418d0d98377
+      - Redis__DbId=2
+      - EnableCache=false
+      - ApiGateway=apigateway
+      - TimeZoneId=SE Asia Standard Time
+      - ApiKey=Cts@1234
+      - PORT=80
+    volumes:
+      - /mnt/d/daint/configuration:/location-root
+    networks:
+      - default
+
+  main.api:
+    image: davidngo1704/main-api:latest
+    container_name: main.api
+    restart: always
+    environment:
+      - AllowedHosts=*
+      - Serilog__MinimumLevel=Information
+      - Serilog__WriteTo__0__Name=Console
+      - Serilog__WriteTo__1__Name=File
+      - Serilog__WriteTo__1__Args__outputTemplate={Timestamp:HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception}
+      - Serilog__WriteTo__1__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
+      - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=main;Integrated Security=true;Pooling=true;
+      - RabbitOptions__Host=192.168.1.150:5672
+      - RabbitOptions__VirtualHost=daint
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Davidkmhd!1
+      - RabbitOptions__Enable=false
+      - LocationRoot=/location-root
+      - CryptographyKey=12345678876543211234567887654321
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - Jwt__AccessTokenExpire=120
+      - Jwt__RefreshTokenExpire=24
+      - Redis__Configuration=us1-full-piglet-38019.upstash.io:38019,password=a7ec26fc8b0e4689a878d418d0d98377
+      - Redis__DbId=2
+      - EnableCache=false
+      - ApiGateway=apigateway
+      - TimeZoneId=SE Asia Standard Time
+      - ApiKey=Cts@1234
+      - PORT=80
+    volumes:
+      - /mnt/d/daint/main:/location-root
+    networks:
+      - default
+
+  task.api:
+    image: davidngo1704/task:latest
+    container_name: task.api
+    restart: always
+    environment:
+      - AllowedHosts=*
+      - Serilog__MinimumLevel=Information
+      - Serilog__WriteTo__0__Name=Console
+      - Serilog__WriteTo__1__Name=File
+      - Serilog__WriteTo__1__Args__outputTemplate={Timestamp:HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception}
+      - Serilog__WriteTo__1__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
+      - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=task;Integrated Security=true;Pooling=true;
+      - RabbitOptions__Host=192.168.1.150:5672
+      - RabbitOptions__VirtualHost=daint
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Davidkmhd!1
+      - RabbitOptions__Enable=false
+      - LocationRoot=/location-root
+      - CryptographyKey=12345678876543211234567887654321
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - Jwt__AccessTokenExpire=120
+      - Jwt__RefreshTokenExpire=24
+      - Redis__Configuration=us1-full-piglet-38019.upstash.io:38019,password=a7ec26fc8b0e4689a878d418d0d98377
+      - Redis__DbId=2
+      - EnableCache=false
+      - ApiGateway=apigateway
+      - TimeZoneId=SE Asia Standard Time
+      - ApiKey=Cts@1234
+      - PORT=80
+      - ScheduleOptions__DashboardTitle=Cron Job
+      - ScheduleOptions__AppPath=https://www.youtube.com
+      - ScheduleOptions__Path=/schedule
+      - ScheduleOptions__Account=admin
+      - ScheduleOptions__Password=abc@123
+      - Cors=http://localhost:3000,http://localhost:3001
+    volumes:
+      - /mnt/d/daint/task:/location-root
+    ports:
+      - 6969:80
+    networks:
+      - default
+
+  workflow.api:
+    image: davidngo1704/workflow:latest
+    container_name: workflow.api
+    restart: always
+    environment:
+      - AllowedHosts=*
+      - Serilog__MinimumLevel=Information
+      - Serilog__WriteTo__0__Name=Console
+      - Serilog__WriteTo__1__Name=File
+      - Serilog__WriteTo__1__Args__outputTemplate={Timestamp:HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception}
+      - Serilog__WriteTo__1__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
+      - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=workflow;Integrated Security=true;Pooling=true;
+      - RabbitOptions__Host=192.168.1.150:5672
+      - RabbitOptions__VirtualHost=daint
+      - RabbitOptions__User=admin
+      - RabbitOptions__Password=Davidkmhd!1
+      - RabbitOptions__Enable=false
+      - LocationRoot=/location-root
+      - CryptographyKey=12345678876543211234567887654321
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - Jwt__AccessTokenExpire=120
+      - Jwt__RefreshTokenExpire=24
+      - Redis__Configuration=us1-full-piglet-38019.upstash.io:38019,password=a7ec26fc8b0e4689a878d418d0d98377
+      - Redis__DbId=2
+      - EnableCache=false
+      - ApiGateway=apigateway
+      - TimeZoneId=SE Asia Standard Time
+      - ApiKey=Cts@1234
+      - PORT=80
+    volumes:
+      - /mnt/d/daint/workflow:/location-root
+    networks:
+      - default
