@@ -5,9 +5,6 @@ networks:
     name: daint-network
     external: true
 
-volumes:
-  postgre:
-
 services:
   postgre:
     image: postgres:latest
@@ -18,7 +15,7 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=Davidkmhd!1
     volumes:
-      - postgre:/var/lib/postgresql/data
+      - /home/data/postgre:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
