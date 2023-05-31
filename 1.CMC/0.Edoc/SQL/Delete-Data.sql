@@ -3,7 +3,7 @@
   truncate table Content_Stream;
   truncate table Document_Content_Stream;
   truncate table document_link;
-  truncate table DOCUMENT;
+  truncate table "document"  cascade;
   truncate table document_deleted;
 
 
