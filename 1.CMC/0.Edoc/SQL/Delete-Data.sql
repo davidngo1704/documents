@@ -10,7 +10,7 @@
 --Xóa WF Schema WFS
   truncate table to_do_list_ext;
 
-  truncate table to_do_list;
+  truncate table to_do_list cascade;
 
   delete from task_collect_info t where t.task_collect_id in 
   (select ID from task_collect where Task_ID in
@@ -23,7 +23,7 @@
 
   delete from Task where Workflow_ID in (select ID from Workflow);
 
-  truncate table Workflow;
+  truncate table workflow cascade;
 
   truncate table solve_info;
 
