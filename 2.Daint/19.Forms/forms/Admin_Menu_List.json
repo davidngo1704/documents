@@ -1,0 +1,133 @@
+{
+    "Title": "Quản lý Menu",
+    "Controls": [
+        {
+            "Name": "Row1",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Menu",
+                    "Title": "Menu",
+                    "Control": 14,
+                    "IsExpandAll": false,
+                    "Request": {
+                        "method": "GET",
+                        "endpoint": "configuration/Menu/GetAll",
+                        "payload": {}
+                    },
+                    "props": {
+                        "selectionMode": "single",
+                        "filter": true,
+                        "filterMode": "strict"
+                    },
+                    "ControlClass": "p-col-12 p-mb-3 p-md-3"
+                },
+                {
+                    "Name": "RowRight",
+                    "Control": 1,
+                    "ControlClass": "p-grid p-col-9 p-mb-9 p-md-9",
+                    "Controls": [
+                        {
+                            "Name": "RowButton",
+                            "Control": 1,
+                            "Controls": [
+                                {
+                                    "Name": "Table",
+                                    "Control": 9,
+                                    "DisableAutoLoadData": true,
+                                    "Request": {
+                                        "method": "POST",
+                                        "endpoint": "configuration/Menu/Filter",
+                                        "payload": {}
+                                    },
+                                    "ActionRow": {
+                                        "Buttons": [
+                                            {
+                                                "name": "Edit",
+                                                "icon": "pi pi-pencil",
+                                                "className": "p-button-rounded p-button-success p-mr-2"
+                                            },
+                                            {
+                                                "name": "Delete",
+                                                "is_confirm_button": true,
+                                                "confirm_message": "Bạn có muốn xoá không?",
+                                                "confirm_icon": "pi pi-info-circle",
+                                                "confirm_accept_classname": "p-button-danger",
+                                                "confirm_accept_label": "Có",
+                                                "confirm_reject_label": "Không",
+                                                "icon": "pi pi-trash",
+                                                "className": "p-button-rounded p-button-warning"
+                                            }
+                                        ]
+                                    },
+                                    "Columns": [
+                                        {
+                                            "field": "label",
+                                            "header": "Tên",
+                                            "filter": true,
+                                            "filterPlaceholder": "Tìm...",
+                                            "style": {
+                                                "width": "40%"
+                                            }
+                                        },
+                                        {
+                                            "field": "to",
+                                            "header": "Đường link",
+                                            "filter": true,
+                                            "filterPlaceholder": "Tìm...",
+                                            "style": {
+                                                "width": "40%"
+                                            }
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+
+                        {
+                            "Name": "RowButton",
+                            "Control": 1,
+                            "ControlClass": "center-align",
+                            "Controls": [
+                                {
+                                    "Name": "Add",
+                                    "Control": 13,
+                                    "props": {
+                                        "label": "Thêm mới",
+                                        "className": "p-mr-2 p-mb-2"
+                                    }
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "ExternalControls": [
+        {
+            "Name": "DialogAdd",
+            "Control": 11,
+            "Width": 90,
+            "props": {
+                "header": "Thêm mới menu",
+                "keepInViewport": false,
+                "maximized": true,
+                "maximizable": true,
+                "dismissableMask": true
+            }
+        },
+        {
+            "Name": "DialogUpdate",
+            "Control": 11,
+            "Width": 90,
+            "props": {
+                "header": "Menu",
+                "keepInViewport": false,
+                "maximized": true,
+                "maximizable": true,
+                "dismissableMask": true
+            }
+        }
+    ]
+}

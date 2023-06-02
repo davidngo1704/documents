@@ -1,0 +1,115 @@
+{
+    "Controls": [
+        {
+            "Name": "Row1",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Code",
+                    "Title": "Mã",
+                    "Control": 7,
+                    "Validations": {
+                        "Required": true
+                    },
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "Name",
+                    "Title": "Tên",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row2",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Address",
+                    "Title": "Địa chỉ",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "Phone",
+                    "Title": "Số điện thoại",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row3",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Website",
+                    "Title": "Website",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "SeqNo",
+                    "Title": "Số thứ tự",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row4",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Type",
+                    "Title": "Kiểu",
+                    "Control": 5,
+                    "Request": {
+                        "method": "post",
+                        "endpoint": "configuration/ConfigDetail/Filter",
+                        "payload": {
+                            "ConfigID": 7
+                        }
+                    },
+                    "PreHandleItems": "function:#(item) => { item.Value = +item.Value; }",
+                    "props": {
+                        "placeholder": "Chọn kiểu...",
+                        "optionLabel": "Code",
+                        "optionValue": "Value",
+                        "filter": true,
+                        "showClear": true,
+                        "filterBy": "Code",
+                        "showFilterClear": true
+                    },
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-11 p-md-11"
+                }
+            ]
+        }
+    ],
+    "Buttons": [
+        {
+            "Name": "Save",
+            "Control": 13,
+            "IsBlockUI": true,
+            "IsCheckValidateForm": true,
+            "Type": "CallApi",
+            "Request": {
+                "method": "POST",
+                "endpoint": "authentication/Organization/Update",
+                "payload": {}
+            },
+            "props": {
+                "label": "Ghi lại",
+                "className": "p-mr-2 p-mb-2"
+            }
+        }
+    ]
+}

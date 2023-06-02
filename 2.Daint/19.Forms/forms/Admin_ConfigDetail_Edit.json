@@ -1,0 +1,78 @@
+{
+    "Controls": [
+        {
+            "Name": "Row1",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Code",
+                    "Title": "Mã",
+                    "Control": 7,
+                    "Validations": {
+                        "Required": true
+                    },
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "Value",
+                    "Title": "Giá trị",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row2",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Description",
+                    "Title": "Mô tả",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-11 p-md-11"
+                }
+            ]
+        },
+        {
+            "Name": "Row2",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "SeqNo",
+                    "Title": "Số thứ tự",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "IsSecure",
+                    "Title": "Bảo mật",
+                    "Control": 4,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        }
+    ],
+    "Buttons": [
+        {
+            "Name": "Save",
+            "Control": 13,
+            "IsBlockUI": true,
+            "IsCheckValidateForm": true,
+            "Type": "CallApi",
+            "Request": {
+                "method": "PUT",
+                "endpoint": "configuration/ConfigDetail/Update",
+                "payload": {}
+            },
+            "props": {
+                "label": "Ghi lại",
+                "className": "p-mr-2 p-mb-2"
+            }
+        }
+    ]
+}

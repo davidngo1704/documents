@@ -1,0 +1,8 @@
+{
+    "Table__Edit__ActionRow": "(state, extData, errors, event, rowData) => { if(extData.__?.DialogUpdate__OpenDialog) {  extData.__?.DialogUpdate__OpenDialog(rowData); }  }",
+    "Table__Delete__ActionRow": "(state, extData, errors, event, rowData) => { (async function() {    const { data } = await extData.__?.httpClient?.deleteMethod(`authentication/User/Delete?id=${rowData.Id}`);    })(); }",
+    "Search": "(state, extData, errors, event) => { delete state.Table; extData.__?.setValueForm('Table', state); }",
+    "Add": "(state, extData, errors, event) => { if(extData.__?.DialogAdd__OpenDialog) {  extData.__?.DialogAdd__OpenDialog()  }  }",
+    "DialogAdd__BeforeOpenDialog": "(state, extData, errors, event, tempState) => { return async function() {   const formRes = await formHelper.getFormByCode('Admin_User_Add');     return {formDef: formRes }    }; }",
+    "DialogUpdate__BeforeOpenDialog": "(state, extData, errors, event, tempState) => { return async function() { const { data } = await extData.__?.httpClient?.getMethod(`authentication/User/GetById?id=${tempState.Id}`);  const formRes = await formHelper.getFormByCode('Admin_User_Update', true, data); return {formDef: formRes, initState: data } }; }"
+}

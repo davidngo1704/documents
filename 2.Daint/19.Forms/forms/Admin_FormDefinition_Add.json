@@ -1,0 +1,319 @@
+{
+    "Controls": [
+        {
+            "Name": "Row1",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Code",
+                    "Title": "Mã",
+                    "Control": 7,
+                    "Validations": {
+                        "Required": true
+                    },
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "Name",
+                    "Title": "Tên",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row2",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Module",
+                    "Title": "Phân hệ",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "SubModule",
+                    "Title": "Phân hệ con",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-2 p-md-2"
+                },
+                {
+                    "Name": "Screen",
+                    "Title": "Màn hình",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-2 p-md-2"
+                }
+            ]
+        },
+        {
+            "Name": "Row3",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "FieldChangeCode",
+                    "Title": "Sự kiện thay đổi",
+                    "Control": 2,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5",
+                    "ValueTemplate": "<%= Code %>",
+                    "IdTemplate": "0:#Code",
+                    "FieldQuery": "Code",
+                    "ItemTemplate": "<%= Code %> - <%= Name %>",
+                    "SeletedItemTemplate": "<%= Code %>",
+                    "Request": {
+                        "method": "post",
+                        "endpoint": "configuration/DefinitionLibrary/Filter",
+                        "payload": {
+                            "type": 1
+                        }
+                    }
+                },
+                {
+                    "Name": "EventHanldingCode",
+                    "Title": "Sự kiện",
+                    "Control": 2,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5",
+                    "ValueTemplate": "<%= Code %>",
+                    "IdTemplate": "0:#Code",
+                    "FieldQuery": "Code",
+                    "ItemTemplate": "<%= Code %> - <%= Name %>",
+                    "SeletedItemTemplate": "<%= Code %>",
+                    "Request": {
+                        "method": "post",
+                        "endpoint": "configuration/DefinitionLibrary/Filter",
+                        "payload": {
+                            "type": 3
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "Name": "Row4",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "InitStateCode",
+                    "Title": "Giá trị khởi tạo",
+                    "Control": 2,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5",
+                    "ValueTemplate": "<%= Code %>",
+                    "IdTemplate": "0:#Code",
+                    "FieldQuery": "Code",
+                    "ItemTemplate": "<%= Code %> - <%= Name %>",
+                    "SeletedItemTemplate": "<%= Code %>",
+                    "Request": {
+                        "method": "post",
+                        "endpoint": "configuration/DefinitionLibrary/Filter",
+                        "payload": {
+                            "type": 2
+                        }
+                    }
+                },
+                {
+                    "Name": "Description",
+                    "Title": "Mô tả",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row5",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Extend1",
+                    "Title": "Trường mở rộng 1",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "Extend2",
+                    "Title": "Trường mở rộng 2",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row6",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Extend3",
+                    "Title": "Trường mở rộng 3",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "Extend4",
+                    "Title": "Trường mở rộng 4",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row7",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Extend5",
+                    "Title": "Trường mở rộng 5",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "Extend6",
+                    "Title": "Trường mở rộng 6",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row8",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Extend7",
+                    "Title": "Trường mở rộng 7",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "Extend8",
+                    "Title": "Trường mở rộng 8",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row9",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Extend9",
+                    "Title": "Trường mở rộng 9",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "Extend10",
+                    "Title": "Trường mở rộng 10",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row10",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Status",
+                    "Title": "Trạng thái",
+                    "Control": 5,
+                    "Request": {
+                        "method": "post",
+                        "endpoint": "configuration/ConfigDetail/Filter",
+                        "payload": {
+                            "ConfigID": 5
+                        }
+                    },
+                    "PreHandleItems": "function:#(item) => { item.Value = +item.Value; }",
+                    "props": {
+                        "placeholder": "Chọn trạng thái...",
+                        "optionLabel": "Code",
+                        "optionValue": "Value",
+                        "filter": true,
+                        "showClear": true,
+                        "filterBy": "Code",
+                        "showFilterClear": true
+                    },
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "Type",
+                    "Title": "Kiểu",
+                    "Control": 5,
+                    "Request": {
+                        "method": "post",
+                        "endpoint": "configuration/ConfigDetail/Filter",
+                        "payload": {
+                            "ConfigID": 6
+                        }
+                    },
+                    "PreHandleItems": "function:#(item) => { item.Value = +item.Value; }",
+                    "props": {
+                        "placeholder": "Chọn kiểu...",
+                        "optionLabel": "Code",
+                        "optionValue": "Value",
+                        "filter": true,
+                        "showClear": true,
+                        "filterBy": "Code",
+                        "showFilterClear": true
+                    },
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row11",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "Value",
+                    "Title": "Giá trị",
+                    "Control": 8,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-11",
+                    "props": {
+                        "rows": 3,
+                        "autoResize": true
+                    }
+                }
+            ]
+        }
+    ],
+    "Buttons": [
+        {
+            "Name": "Save",
+            "Control": 13,
+            "IsBlockUI": true,
+            "IsCheckValidateForm": true,
+            "Type": "CallApi",
+            "Request": {
+                "method": "POST",
+                "endpoint": "configuration/FormDefinition/Add",
+                "payload": {}
+            },
+            "props": {
+                "label": "Ghi lại",
+                "className": "p-mr-2 p-mb-2"
+            }
+        }
+    ]
+}

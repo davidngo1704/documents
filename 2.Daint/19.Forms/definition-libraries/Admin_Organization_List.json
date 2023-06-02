@@ -1,0 +1,7 @@
+{
+    "Table__Edit__ActionRow": "(state, extData, errors, event, rowData) => { if(extData.__?.DialogUpdate__OpenDialog) {  extData.__?.DialogUpdate__OpenDialog(rowData); }  }",
+    "Table__Delete__ActionRow": "(state, extData, errors, event, rowData) => { (async function() {    const { data } = await extData.__?.httpClient?.deleteMethod(`authentication/Organization/Delete?id=${rowData.Id}`);    })(); }",
+    "Add": "(state, extData, errors, event) => {   if(extData.__?.DialogAdd__OpenDialog) {  extData.__?.DialogAdd__OpenDialog()  }    }",
+    "DialogAdd__BeforeOpenDialog": "(state, extData, errors, event, tempState) => { return async function() {   const formRes = await formHelper.getFormByCode('Admin_Organization_Add');     return {formDef: formRes, initState: state.Table }    }; }",
+    "DialogUpdate__BeforeOpenDialog": "(state, extData, errors, event, tempState) => { return async function() { const formRes = await formHelper.getFormByCode('Admin_Organization_Update');   const { data } = await extData.__?.httpClient?.getMethod(`authentication/Organization/GetById?Id=${tempState.Id}`); return {formDef: formRes, initState: data } }; }"
+}

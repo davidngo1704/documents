@@ -1,0 +1,128 @@
+{
+    "Controls": [
+        {
+            "Name": "Row1",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "label",
+                    "Title": "Tên",
+                    "Control": 7,
+                    "Validations": {
+                        "Required": true
+                    },
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "icon",
+                    "Title": "Icon",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row2",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "to",
+                    "Title": "Đường Link",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "target",
+                    "Title": "target",
+                    "Control": 7,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row3",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "type",
+                    "Title": "Loại",
+                    "Control": 5,
+                    "Request": {
+                        "method": "post",
+                        "endpoint": "configuration/ConfigDetail/Filter",
+                        "payload": {
+                            "ConfigID": 9
+                        }
+                    },
+                    "PreHandleItems": "function:#(item) => { item.Value = +item.Value; }",
+                    "props": {
+                        "placeholder": "Chọn kiểu",
+                        "optionLabel": "Code",
+                        "optionValue": "Value",
+                        "filter": true,
+                        "showClear": true,
+                        "filterBy": "Code",
+                        "showFilterClear": true
+                    },
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                },
+                {
+                    "Name": "isShowSubMenu",
+                    "Title": "Có dùng Menu phụ không?",
+                    "Control": 4,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-5 p-md-5"
+                }
+            ]
+        },
+        {
+            "Name": "Row4",
+            "Control": 1,
+            "Controls": [
+                {
+                    "Name": "roles",
+                    "Title": "Vai trò",
+                    "Control": 15,
+                    "LabelClass": "p-col-12 p-mb-1 p-md-1",
+                    "ControlClass": "p-col-12 p-mb-11 p-md-11",
+                    "Request": {
+                        "method": "post",
+                        "endpoint": "authentication/Role/Filter",
+                        "payload": {}
+                    },
+                    "ValueTemplate": "<%= Id%>:#<%= Code%>",
+                    "IdTemplate": "0:#Id;#1:#Code",
+                    "props": {
+                        "optionLabel": "Name",
+                        "placeholder": "Chọn vai trò...",
+                        "display": "chip",
+                        "filter": true
+                    }
+                }
+            ]
+        }
+    ],
+    "Buttons": [
+        {
+            "Name": "Save",
+            "Control": 13,
+            "IsBlockUI": true,
+            "IsCheckValidateForm": true,
+            "Type": "CallApi",
+            "Request": {
+                "method": "POST",
+                "endpoint": "configuration/Menu/Add",
+                "payload": {}
+            },
+            "props": {
+                "label": "Ghi lại",
+                "className": "p-mr-2 p-mb-2"
+            }
+        }
+    ]
+}
