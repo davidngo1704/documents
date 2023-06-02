@@ -50,7 +50,7 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      # - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=authentication;Integrated Security=true;Pooling=true;
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.161.10.100;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=authentication;Integrated Security=true;Pooling=true;
       - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
@@ -89,7 +89,7 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      # - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=configuration;Integrated Security=true;Pooling=true;
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.161.10.100;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=configuration;Integrated Security=true;Pooling=true;
       - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
@@ -128,7 +128,7 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      # - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=main;Integrated Security=true;Pooling=true;
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.161.10.100;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=main;Integrated Security=true;Pooling=true;
       - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
@@ -167,7 +167,7 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      # - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=task;Integrated Security=true;Pooling=true;
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.161.10.100;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=task;Integrated Security=true;Pooling=true;
       - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
@@ -214,7 +214,7 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      # - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=workflow;Integrated Security=true;Pooling=true;
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.161.10.100;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=workflow;Integrated Security=true;Pooling=true;
       - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
