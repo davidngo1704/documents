@@ -13,7 +13,7 @@ services:
     restart: always
     environment:
       - PROFILE=production
-      - API_URL=http://http://10.161.10.100:9999/
+      - API_URL=http://10.161.10.100:9999/
     ports:
       - 80:80
 
@@ -50,8 +50,8 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=authentication;Integrated Security=true;Pooling=true;
-      - RabbitOptions__Host=192.168.1.150:5672
+      # - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=authentication;Integrated Security=true;Pooling=true;
+      - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
       - RabbitOptions__Password=Davidkmhd!1
@@ -89,8 +89,8 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=configuration;Integrated Security=true;Pooling=true;
-      - RabbitOptions__Host=192.168.1.150:5672
+      # - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=configuration;Integrated Security=true;Pooling=true;
+      - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
       - RabbitOptions__Password=Davidkmhd!1
@@ -128,8 +128,8 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=main;Integrated Security=true;Pooling=true;
-      - RabbitOptions__Host=192.168.1.150:5672
+      # - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=main;Integrated Security=true;Pooling=true;
+      - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
       - RabbitOptions__Password=Davidkmhd!1
@@ -167,8 +167,8 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=task;Integrated Security=true;Pooling=true;
-      - RabbitOptions__Host=192.168.1.150:5672
+      # - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=task;Integrated Security=true;Pooling=true;
+      - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
       - RabbitOptions__Password=Davidkmhd!1
@@ -214,8 +214,8 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=workflow;Integrated Security=true;Pooling=true;
-      - RabbitOptions__Host=192.168.1.150:5672
+      # - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=192.168.1.150;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=workflow;Integrated Security=true;Pooling=true;
+      - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
       - RabbitOptions__Password=Davidkmhd!1
