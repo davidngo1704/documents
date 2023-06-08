@@ -1,3 +1,2 @@
-58 121 347
-Davidkmhd!1
 
+sudo timedatectl set-time "2023-06-02 22:54:00"

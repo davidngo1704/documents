@@ -1,32 +1,20 @@
-# fly.toml file generated for autumn-flower-470 on 2023-04-15T00:44:57-04:00
+# fly.toml app configuration file generated for davidngo-configuration on 2023-06-04T09:47:58+07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
-app = "autumn-flower-470"
-kill_signal = "SIGINT"
-kill_timeout = 5
-mounts = []
+app = "davidngo-configuration"
 primary_region = "sin"
-processes = []
 
 [build]
   image = "davidngo1704/configuration-api:latest"
 
-[[services]]
+[http_service]
   internal_port = 8080
-  processes = ["app"]
-  protocol = "tcp"
-  [services.concurrency]
-    hard_limit = 25
-    soft_limit = 20
-    type = "connections"
-
-  [[services.ports]]
-    force_https = true
-    handlers = ["http"]
-    port = 80
-
-  [[services.ports]]
-    handlers = ["tls", "http"]
-    port = 443
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
 
 [mounts]
 source="configuration_data"

@@ -3,8 +3,6 @@ export FLYCTL_INSTALL="/root/.fly"
 
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
-/root/.fly/bin/flyctl secrets set ASPNETCORE_ENVIRONMENT=Development
-
 /root/.fly/bin/flyctl launch --image davidngo1704/api-gateway:latest
 
 /root/.fly/bin/flyctl launch --image davidngo1704/authentication-api:latest
@@ -38,7 +36,7 @@ fly volumes create task_data --size 1
 -------------------------------------------------------------
 
 
-/root/.fly/bin/flyctl volumes create configuration_data --size 3
+/root/.fly/bin/flyctl volumes create configuration_data --size 1
 
 /root/.fly/bin/flyctl volumes create main_data --size 2 
 
