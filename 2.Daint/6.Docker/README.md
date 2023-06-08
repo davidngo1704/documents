@@ -11,3 +11,21 @@ docker tag 79f1263f1b07 10.162.80.114:5000/maven:3.8.6-jdk-8-spring
 sudo sh -c "truncate -s 0 /var/lib/docker/containers/*/*-json.log"
 
 docker network create daint-network
+
+// ---------------------------------------------------------------------------
+
+docker pull node:16.17.1-alpine3.16
+
+docker pull nginx:stable-alpine
+
+docker pull mcr.microsoft.com/dotnet/aspnet:7.0
+
+docker pull mcr.microsoft.com/dotnet/sdk:7.0
+
+docker save node:16.17.1-alpine3.16 > node:16.17.1-alpine3.16.tar
+
+docker save nginx:stable-alpine > nginx:stable-alpine.tar
+
+docker save mcr.microsoft.com/dotnet/aspnet:7.0 > mcr.microsoft.com/dotnet/aspnet:7.0.tar
+
+docker save mcr.microsoft.com/dotnet/sdk:7.0 > mcr.microsoft.com/dotnet/sdk:7.0.tar
