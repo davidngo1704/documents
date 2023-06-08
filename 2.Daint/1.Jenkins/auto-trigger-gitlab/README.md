@@ -12,7 +12,7 @@ Trong Gitlab. Chọn (Settings  =>  Integrations):
 
 URL:  http://10.162.80.110:8080/project/CI.CMC.TS.DVC.BIZ
 
-Secret Token: <Token/>  
+Secret Token: <Token/>  (Token đã generate từ bước Jenkins bên trên)
 
 Tích chọn : Push Events.
 
