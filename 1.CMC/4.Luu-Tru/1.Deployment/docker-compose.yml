@@ -68,11 +68,6 @@ services:
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
       - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_authentication;Integrated Security=true;Pooling=true;
-      - RabbitOptions__Host=rabbitmq:5672
-      - RabbitOptions__VirtualHost=daint
-      - RabbitOptions__User=admin
-      - RabbitOptions__Password=Davidkmhd!1
-      - RabbitOptions__Enable=false
       - LocationRoot=/location-root
       - CryptographyKey=12345678876543211234567887654321
       - Jwt__Issuer=Dai-Issuer
@@ -104,11 +99,6 @@ services:
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
       - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_configuration;Integrated Security=true;Pooling=true;
-      - RabbitOptions__Host=rabbitmq:5672
-      - RabbitOptions__VirtualHost=daint
-      - RabbitOptions__User=admin
-      - RabbitOptions__Password=Davidkmhd!1
-      - RabbitOptions__Enable=false
       - LocationRoot=/location-root
       - CryptographyKey=12345678876543211234567887654321
       - Jwt__Issuer=Dai-Issuer
@@ -116,7 +106,7 @@ services:
       - Jwt__Key=12345678876543211234567887654321
       - Jwt__AccessTokenExpire=120
       - Jwt__RefreshTokenExpire=240
-      - ApiGateway=apigateway
+      - ApiGateway=quangngai.apigateway.private
       - TimeZoneId=SE Asia Standard Time
       - ApiKey=Cts@1234
       - PORT=80
@@ -140,11 +130,6 @@ services:
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
       - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_main;Integrated Security=true;Pooling=true;
-      - RabbitOptions__Host=rabbitmq:5672
-      - RabbitOptions__VirtualHost=daint
-      - RabbitOptions__User=admin
-      - RabbitOptions__Password=Davidkmhd!1
-      - RabbitOptions__Enable=false
       - LocationRoot=/location-root
       - CryptographyKey=12345678876543211234567887654321
       - Jwt__Issuer=Dai-Issuer
@@ -152,7 +137,7 @@ services:
       - Jwt__Key=12345678876543211234567887654321
       - Jwt__AccessTokenExpire=120
       - Jwt__RefreshTokenExpire=240
-      - ApiGateway=apigateway
+      - ApiGateway=quangngai.apigateway.private
       - TimeZoneId=SE Asia Standard Time
       - ApiKey=Cts@1234
       - PORT=80
@@ -176,22 +161,14 @@ services:
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
       - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_task;Integrated Security=true;Pooling=true;
-      - RabbitOptions__Host=rabbitmq:5672
-      - RabbitOptions__VirtualHost=daint
-      - RabbitOptions__User=admin
-      - RabbitOptions__Password=Davidkmhd!1
-      - RabbitOptions__Enable=false
       - LocationRoot=/location-root
       - CryptographyKey=12345678876543211234567887654321
       - Jwt__Issuer=Dai-Issuer
       - Jwt__Audience=Dai-Audience
       - Jwt__Key=12345678876543211234567887654321
       - Jwt__AccessTokenExpire=120
-      - Jwt__RefreshTokenExpire=24
-      - Redis__Configuration=us1-full-piglet-38019.upstash.io:38019,password=a7ec26fc8b0e4689a878d418d0d98377
-      - Redis__DbId=2
-      - EnableCache=false
-      - ApiGateway=apigateway
+      - Jwt__RefreshTokenExpire=240
+      - ApiGateway=quangngai.apigateway.private
       - TimeZoneId=SE Asia Standard Time
       - ApiKey=Cts@1234
       - PORT=80
