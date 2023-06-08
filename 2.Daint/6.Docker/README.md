@@ -26,6 +26,32 @@ docker save node:16.17.1-alpine3.16 > node:16.17.1-alpine3.16.tar
 
 docker save nginx:stable-alpine > nginx:stable-alpine.tar
 
-docker save mcr.microsoft.com/dotnet/aspnet:7.0 > mcr.microsoft.com/dotnet/aspnet:7.0.tar
+docker save mcr.microsoft.com/dotnet/aspnet:7.0 > mcr.microsoft.com.dotnet.aspnet.7.0.tar
 
-docker save mcr.microsoft.com/dotnet/sdk:7.0 > mcr.microsoft.com/dotnet/sdk:7.0.tar
+docker save mcr.microsoft.com/dotnet/sdk:7.0 > mcr.microsoft.com.dotnet.sdk.7.0.tar
+
+docker load < node_16.17.1-alpine3.16.tar
+
+docker load < nginx_stable-alpine.tar
+
+docker load < mcr.microsoft.com.dotnet.aspnet.7.0.tar
+
+docker load < mcr.microsoft.com.dotnet.sdk.7.0.tar
+
+10.162.80.114:5000
+
+docker tag node:16.17.1-alpine3.16 10.162.80.114:5000/node:16.17.1-alpine3.16
+
+docker tag nginx:stable-alpine 10.162.80.114:5000/nginx:stable-alpine
+
+docker tag mcr.microsoft.com/dotnet/aspnet:7.0 10.162.80.114:5000/mcr.microsoft.com/dotnet/aspnet:7.0
+
+docker tag mcr.microsoft.com/dotnet/sdk:7.0 10.162.80.114:5000/mcr.microsoft.com/dotnet/sdk:7.0
+
+docker push 10.162.80.114:5000/node:16.17.1-alpine3.16
+
+docker push 10.162.80.114:5000/nginx:stable-alpine
+
+docker push 10.162.80.114:5000/mcr.microsoft.com/dotnet/aspnet:7.0
+
+docker push 10.162.80.114:5000/mcr.microsoft.com/dotnet/sdk:7.0
