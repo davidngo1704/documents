@@ -2,8 +2,8 @@ version: '3.4'
 
 networks:
   default:
-    name: daint-network
-    external: true
+    external:
+      name: daint-network
 
 services:
 
@@ -17,9 +17,9 @@ services:
     ports:
       - 80:80
 
-  apigateway.public:
+  quangngai.apigateway.public:
     image: 10.162.80.114:5000/quang-ngai/ci.apigateway:latest
-    container_name: apigateway.public
+    container_name: quangngai.apigateway.public
     restart: always
     environment:
       - WebServerOptions__MaxRequestBodySize=262144000
@@ -32,13 +32,13 @@ services:
     ports:
       - 80:80
     volumes:
-      - /home/api-gateway/public:/app/config
+      - /u01/data/quang-ngai/api-gateway/public:/app/config
     networks:
       - default
 
-  apigateway.private:
+  quangngai.apigateway.private:
     image: 10.162.80.114:5000/quang-ngai/ci.apigateway:latest
-    container_name: apigateway.private
+    container_name: quangngai.apigateway.private
     restart: always
     environment:
       - WebServerOptions__MaxRequestBodySize=262144000
@@ -49,13 +49,13 @@ services:
       - PORT=80
       - IsUseLocalConfig=false
     volumes:
-      - /home/api-gateway/private:/app/config
+      - /u01/data/quang-ngai/api-gateway/private:/app/config
     networks:
       - default
 
-  authentication.api:
+  quangngai.authentication.api:
     image: 10.162.80.114:5000/quang-ngai/ci.authentication.api:latest
-    container_name: authentication.api
+    container_name: quangngai.authentication.api
     restart: always
     environment:
       - AllowedHosts=*
@@ -79,22 +79,19 @@ services:
       - Jwt__Audience=Dai-Audience
       - Jwt__Key=12345678876543211234567887654321
       - Jwt__AccessTokenExpire=120
-      - Jwt__RefreshTokenExpire=24
-      - Redis__Configuration=us1-full-piglet-38019.upstash.io:38019,password=a7ec26fc8b0e4689a878d418d0d98377
-      - Redis__DbId=1
-      - EnableCache=false
-      - ApiGateway=apigateway
+      - Jwt__RefreshTokenExpire=240
+      - ApiGateway=quangngai.apigateway.private
       - TimeZoneId=SE Asia Standard Time
       - ApiKey=Cts@1234
       - PORT=80
     volumes:
-      - /home/data/daint-system/authentication:/location-root
+      - /u01/data/quang-ngai/authentication:/location-root
     networks:
       - default
 
-  configuration.api:
+  quangngai.configuration.api:
     image: 10.162.80.114:5000/quang-ngai/ci.configuration.api:latest
-    container_name: configuration.api
+    container_name: quangngai.configuration.api
     restart: always
     environment:
       - AllowedHosts=*
@@ -118,22 +115,19 @@ services:
       - Jwt__Audience=Dai-Audience
       - Jwt__Key=12345678876543211234567887654321
       - Jwt__AccessTokenExpire=120
-      - Jwt__RefreshTokenExpire=24
-      - Redis__Configuration=us1-full-piglet-38019.upstash.io:38019,password=a7ec26fc8b0e4689a878d418d0d98377
-      - Redis__DbId=2
-      - EnableCache=false
+      - Jwt__RefreshTokenExpire=240
       - ApiGateway=apigateway
       - TimeZoneId=SE Asia Standard Time
       - ApiKey=Cts@1234
       - PORT=80
     volumes:
-      - /home/data/daint-system/configuration:/location-root
+      - /u01/data/quang-ngai/configuration:/location-root
     networks:
       - default
 
-  main.api:
+  quangngai.main.api:
     image: 10.162.80.114:5000/quang-ngai/ci.main.api:latest
-    container_name: main.api
+    container_name: quangngai.main.api
     restart: always
     environment:
       - AllowedHosts=*
@@ -157,16 +151,13 @@ services:
       - Jwt__Audience=Dai-Audience
       - Jwt__Key=12345678876543211234567887654321
       - Jwt__AccessTokenExpire=120
-      - Jwt__RefreshTokenExpire=24
-      - Redis__Configuration=us1-full-piglet-38019.upstash.io:38019,password=a7ec26fc8b0e4689a878d418d0d98377
-      - Redis__DbId=2
-      - EnableCache=false
+      - Jwt__RefreshTokenExpire=240
       - ApiGateway=apigateway
       - TimeZoneId=SE Asia Standard Time
       - ApiKey=Cts@1234
       - PORT=80
     volumes:
-      - /home/data/daint-system/main:/location-root
+      - /u01/data/quang-ngai/main:/location-root
     networks:
       - default
 
@@ -211,7 +202,7 @@ services:
       - ScheduleOptions__Password=abc@123
       - Cors=http://localhost:3000,http://localhost:3001
     volumes:
-      - /home/data/daint-system/task:/location-root
+      - /u01/data/quang-ngai/task:/location-root
     ports:
       - 6969:80
     networks:
