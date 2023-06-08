@@ -8,7 +8,7 @@ networks:
 services:
 
   main.web:
-    image: davidngo1704/main-web:latest
+    image: 10.162.80.114:5000/quang-ngai/ci.web:latest
     container_name: main.web
     restart: always
     environment:
@@ -18,7 +18,7 @@ services:
       - 80:80
 
   apigateway.public:
-    image: 192.168.1.150:5000/ci.apigateway:latest
+    image: 10.162.80.114:5000/quang-ngai/ci.apigateway:latest
     container_name: apigateway.public
     restart: always
     environment:
@@ -37,7 +37,7 @@ services:
       - default
 
   apigateway.private:
-    image: 192.168.1.150:5000/ci.apigateway:latest
+    image: 10.162.80.114:5000/quang-ngai/ci.apigateway:latest
     container_name: apigateway.private
     restart: always
     environment:
@@ -54,7 +54,7 @@ services:
       - default
 
   authentication.api:
-    image: davidngo1704/authentication-api:latest
+    image: 10.162.80.114:5000/quang-ngai/ci.authentication.api:latest
     container_name: authentication.api
     restart: always
     environment:
@@ -93,7 +93,7 @@ services:
       - default
 
   configuration.api:
-    image: davidngo1704/configuration-api:latest
+    image: 10.162.80.114:5000/quang-ngai/ci.configuration.api:latest
     container_name: configuration.api
     restart: always
     environment:
@@ -132,7 +132,7 @@ services:
       - default
 
   main.api:
-    image: davidngo1704/main-api:latest
+    image: 10.162.80.114:5000/quang-ngai/ci.main.api:latest
     container_name: main.api
     restart: always
     environment:
@@ -171,7 +171,7 @@ services:
       - default
 
   task.api:
-    image: davidngo1704/task:latest
+    image: 10.162.80.114:5000/quang-ngai/ci.task.api:latest
     container_name: task.api
     restart: always
     environment:
