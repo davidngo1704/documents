@@ -17,9 +17,28 @@ services:
     ports:
       - 80:80
 
-  apigateway:
-    image: davidngo1704/api-gateway:latest
-    container_name: apigateway
+  apigateway.public:
+    image: 192.168.1.150:5000/ci.apigateway:latest
+    container_name: apigateway.public
+    restart: always
+    environment:
+      - WebServerOptions__MaxRequestBodySize=262144000
+      - Jwt__ProviderKey=Dai-Provider
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - PORT=80
+      - IsUseLocalConfig=false
+    ports:
+      - 80:80
+    volumes:
+      - /home/api-gateway/public:/app/config
+    networks:
+      - default
+
+  apigateway.private:
+    image: 192.168.1.150:5000/ci.apigateway:latest
+    container_name: apigateway.private
     restart: always
     environment:
       - WebServerOptions__MaxRequestBodySize=262144000
@@ -30,9 +49,7 @@ services:
       - PORT=80
       - IsUseLocalConfig=false
     volumes:
-      - /home/data/daint-system/apigateway:/app/config
-    ports:
-      - 9999:80
+      - /home/api-gateway/private:/app/config
     networks:
       - default
 
@@ -50,7 +67,7 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.161.10.100;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=authentication;Integrated Security=true;Pooling=true;
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_authentication;Integrated Security=true;Pooling=true;
       - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
@@ -89,7 +106,7 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.161.10.100;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=configuration;Integrated Security=true;Pooling=true;
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_configuration;Integrated Security=true;Pooling=true;
       - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
@@ -128,7 +145,7 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.161.10.100;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=main;Integrated Security=true;Pooling=true;
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_main;Integrated Security=true;Pooling=true;
       - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
@@ -167,7 +184,7 @@ services:
       - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
       - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
       - DatabaseOptions__Provider=PostgreSQL
-      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.161.10.100;Port=5432;User ID=admin;Password='Davidkmhd!1';Database=task;Integrated Security=true;Pooling=true;
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_task;Integrated Security=true;Pooling=true;
       - RabbitOptions__Host=rabbitmq:5672
       - RabbitOptions__VirtualHost=daint
       - RabbitOptions__User=admin
