@@ -146,9 +146,9 @@ services:
     networks:
       - default
 
-  task.api:
+  quangngai.task.api:
     image: 10.162.80.114:5000/quang-ngai/ci.task.api:latest
-    container_name: task.api
+    container_name: quangngai.task.api
     restart: always
     environment:
       - AllowedHosts=*
@@ -173,14 +173,15 @@ services:
       - ApiKey=Cts@1234
       - PORT=80
       - ScheduleOptions__DashboardTitle=Cron Job
-      - ScheduleOptions__AppPath=https://www.youtube.com
+      - ScheduleOptions__AppPath=/
       - ScheduleOptions__Path=/schedule
       - ScheduleOptions__Account=admin
       - ScheduleOptions__Password=abc@123
-      - Cors=http://localhost:3000,http://localhost:3001
+      - Cors=http://localhost:3000,http://10.162.80.112:1998
     volumes:
       - /u01/data/quang-ngai/task:/location-root
     ports:
-      - 6969:80
+      - 1997:80
     networks:
       - default
+
