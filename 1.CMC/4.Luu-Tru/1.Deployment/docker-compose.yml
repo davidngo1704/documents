@@ -1,0 +1,187 @@
+version: '3.4'
+
+networks:
+  default:
+    external:
+      name: daint-network
+
+services:
+
+  main.web:
+    image: 10.162.80.114:5000/quang-ngai/ci.web:latest
+    container_name: main.web
+    restart: always
+    environment:
+      - PROFILE=production
+      - API_URL=http://10.161.10.100:9999/
+    ports:
+      - 80:80
+
+  quangngai.apigateway.public:
+    image: 10.162.80.114:5000/quang-ngai/ci.apigateway:latest
+    container_name: quangngai.apigateway.public
+    restart: always
+    environment:
+      - WebServerOptions__MaxRequestBodySize=262144000
+      - Jwt__ProviderKey=Dai-Provider
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - PORT=80
+      - IsUseLocalConfig=false
+    ports:
+      - 80:80
+    volumes:
+      - /u01/data/quang-ngai/api-gateway/public:/app/config
+    networks:
+      - default
+
+  quangngai.apigateway.private:
+    image: 10.162.80.114:5000/quang-ngai/ci.apigateway:latest
+    container_name: quangngai.apigateway.private
+    restart: always
+    environment:
+      - WebServerOptions__MaxRequestBodySize=262144000
+      - Jwt__ProviderKey=Dai-Provider
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - PORT=80
+      - IsUseLocalConfig=false
+    volumes:
+      - /u01/data/quang-ngai/api-gateway/private:/app/config
+    networks:
+      - default
+
+  quangngai.authentication.api:
+    image: 10.162.80.114:5000/quang-ngai/ci.authentication.api:latest
+    container_name: quangngai.authentication.api
+    restart: always
+    environment:
+      - AllowedHosts=*
+      - Serilog__MinimumLevel=Information
+      - Serilog__WriteTo__0__Name=Console
+      - Serilog__WriteTo__1__Name=File
+      - Serilog__WriteTo__1__Args__outputTemplate={Timestamp:HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception}
+      - Serilog__WriteTo__1__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
+      - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_authentication;Integrated Security=true;Pooling=true;
+      - LocationRoot=/location-root
+      - CryptographyKey=12345678876543211234567887654321
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - Jwt__AccessTokenExpire=120
+      - Jwt__RefreshTokenExpire=240
+      - ApiGateway=quangngai.apigateway.private
+      - TimeZoneId=SE Asia Standard Time
+      - ApiKey=Cts@1234
+      - PORT=80
+    volumes:
+      - /u01/data/quang-ngai/authentication:/location-root
+    networks:
+      - default
+
+  quangngai.configuration.api:
+    image: 10.162.80.114:5000/quang-ngai/ci.configuration.api:latest
+    container_name: quangngai.configuration.api
+    restart: always
+    environment:
+      - AllowedHosts=*
+      - Serilog__MinimumLevel=Information
+      - Serilog__WriteTo__0__Name=Console
+      - Serilog__WriteTo__1__Name=File
+      - Serilog__WriteTo__1__Args__outputTemplate={Timestamp:HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception}
+      - Serilog__WriteTo__1__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
+      - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_configuration;Integrated Security=true;Pooling=true;
+      - LocationRoot=/location-root
+      - CryptographyKey=12345678876543211234567887654321
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - Jwt__AccessTokenExpire=120
+      - Jwt__RefreshTokenExpire=240
+      - ApiGateway=quangngai.apigateway.private
+      - TimeZoneId=SE Asia Standard Time
+      - ApiKey=Cts@1234
+      - PORT=80
+    volumes:
+      - /u01/data/quang-ngai/configuration:/location-root
+    networks:
+      - default
+
+  quangngai.main.api:
+    image: 10.162.80.114:5000/quang-ngai/ci.main.api:latest
+    container_name: quangngai.main.api
+    restart: always
+    environment:
+      - AllowedHosts=*
+      - Serilog__MinimumLevel=Information
+      - Serilog__WriteTo__0__Name=Console
+      - Serilog__WriteTo__1__Name=File
+      - Serilog__WriteTo__1__Args__outputTemplate={Timestamp:HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception}
+      - Serilog__WriteTo__1__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
+      - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_main;Integrated Security=true;Pooling=true;
+      - LocationRoot=/location-root
+      - CryptographyKey=12345678876543211234567887654321
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - Jwt__AccessTokenExpire=120
+      - Jwt__RefreshTokenExpire=240
+      - ApiGateway=quangngai.apigateway.private
+      - TimeZoneId=SE Asia Standard Time
+      - ApiKey=Cts@1234
+      - PORT=80
+    volumes:
+      - /u01/data/quang-ngai/main:/location-root
+    networks:
+      - default
+
+  quangngai.task.api:
+    image: 10.162.80.114:5000/quang-ngai/ci.task.api:latest
+    container_name: quangngai.task.api
+    restart: always
+    environment:
+      - AllowedHosts=*
+      - Serilog__MinimumLevel=Information
+      - Serilog__WriteTo__0__Name=Console
+      - Serilog__WriteTo__1__Name=File
+      - Serilog__WriteTo__1__Args__outputTemplate={Timestamp:HH:mm:ss.fff} [{Level}] {Message} {NewLine} {Exception}
+      - Serilog__WriteTo__1__Args__rollingInterval=Day
+      - Serilog__WriteTo__1__Args__restrictedToMinimumLevel=Error
+      - Serilog__WriteTo__1__Args__path=/location-root/logs/error/log.txt
+      - DatabaseOptions__Provider=PostgreSQL
+      - DatabaseOptions__ConnectionStrings__PostgreSQL=Server=10.162.81.81;Port=15432;User ID=admin;Password='pz;H8UgB';Database=dev_quangngai_task;Integrated Security=true;Pooling=true;
+      - LocationRoot=/location-root
+      - CryptographyKey=12345678876543211234567887654321
+      - Jwt__Issuer=Dai-Issuer
+      - Jwt__Audience=Dai-Audience
+      - Jwt__Key=12345678876543211234567887654321
+      - Jwt__AccessTokenExpire=120
+      - Jwt__RefreshTokenExpire=240
+      - ApiGateway=quangngai.apigateway.private
+      - TimeZoneId=SE Asia Standard Time
+      - ApiKey=Cts@1234
+      - PORT=80
+      - ScheduleOptions__DashboardTitle=Cron Job
+      - ScheduleOptions__AppPath=/
+      - ScheduleOptions__Path=/schedule
+      - ScheduleOptions__Account=admin
+      - ScheduleOptions__Password=abc@123
+      - Cors=http://localhost:3000,http://10.162.80.112:1998
+    volumes:
+      - /u01/data/quang-ngai/task:/location-root
+    ports:
+      - 1997:80
+    networks:
+      - default
+
