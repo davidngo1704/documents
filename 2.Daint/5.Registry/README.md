@@ -1,7 +1,7 @@
 /etc/docker/daemon.json
 
 {
-    "insecure-registries" : ["127.0.0.1:5000"]
+    "insecure-registries" : ["127.0.0.1:5000", "10.162.80.114:5000"]
 }
 
 
