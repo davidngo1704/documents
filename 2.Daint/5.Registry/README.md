@@ -4,6 +4,10 @@
     "insecure-registries" : ["127.0.0.1:5000", "10.162.80.114:5000"]
 }
 
+{
+    "insecure-registries" : ["127.0.0.1:5000", "10.162.80.114:5000"]
+}
+
 
 docker tag mcr.microsoft.com/dotnet/aspnet:7.0 127.0.0.1:5000/mcr.microsoft.com/dotnet/aspnet:7.0
 

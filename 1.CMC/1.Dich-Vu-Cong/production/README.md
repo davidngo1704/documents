@@ -24,3 +24,12 @@ where c.config_id = 17 and c.code = 'OnTime';
 
 select * from config_detail c
 where c.config_id = 17 and c.code = 'OutDate';
+
+docker tag registry 10.45.4.105/registry
+
+docker push 10.45.4.105/registry
+
+
+docker tag registry 127.0.0.1:5000/registry
+
+docker push 127.0.0.1:5000/registry
