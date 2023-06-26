@@ -31,7 +31,7 @@ docker tag nginx:stable-alpine 127.0.0.1:5000/nginx:stable-alpine
 docker push 127.0.0.1:5000/nginx:stable-alpine
 
 
-/bin/registry garbage-collect [--dry-run] --delete-untagged /var/lib/registry/docker/config.yml
+docker container exec -it registry /bin/registry garbage-collect --delete-untagged /var/lib/registry/docker/config.yml
 
 
 Nội dung file config.yml

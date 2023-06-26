@@ -1,11 +1,18 @@
 version: '3.8'
-volumes:
-  registry:
+
+networks:
+  default:
+    name: daint-network
+    external: true
+
 services:
   registry:
+    container_name: registry
     image: registry:latest
     restart: always
     volumes:
-      - registry:/var/lib/registry
+      - /home/data/registry:/var/lib/registry
     ports:
       - "5000:5000"
+    networks:
+      - default
