@@ -29,3 +29,14 @@ docker pull nginx:stable-alpine
 docker tag nginx:stable-alpine 127.0.0.1:5000/nginx:stable-alpine
 
 docker push 127.0.0.1:5000/nginx:stable-alpine
+
+
+/bin/registry garbage-collect [--dry-run] --delete-untagged /var/lib/registry/docker/config.yml
+
+
+Nội dung file config.yml
+version: 0.1
+storage:
+  filesystem:
+    rootdirectory: /var/lib/registry
+
