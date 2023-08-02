@@ -44,5 +44,5 @@ Token_Endpoint_SSO: https://login.microsoftonline.com/447dc0c8-05a8-4a70-9046-d1
     - scope: openid
     - grant_type: authorization_code
     - client_id: 5aea85a8-ea23-4020-8838-64928e7d2459
-    - redirect_uri: http://dichvucong.ubdt.gov.vn/signin-oidc
+    - redirect_uri: https://dichvucong.ubdt.gov.vn/signin-oidc
     - client_secret: gvn8Q~hAPjjoECb~vCepfEO3pV744JV6RxY1xcs_
