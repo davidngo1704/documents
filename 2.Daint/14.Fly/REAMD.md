@@ -1,6 +1,6 @@
 curl -L https://fly.io/install.sh | sh
 
-fly auth login
+/root/.fly/bin/flyctl auth login
 
 export FLYCTL_INSTALL="/root/.fly"
 
@@ -20,21 +20,21 @@ export PATH="$FLYCTL_INSTALL/bin:$PATH"
 
 #---------------------------------------------------------------
 
-fly secrets set ASPNETCORE_ENVIRONMENT=Development
-fly launch --image davidngo1704/api-gateway:latest
-fly launch --image davidngo1704/authentication-api:latest
-fly launch --image davidngo1704/configuration-api:latest
-fly launch --image davidngo1704/main-api:latest
-fly launch --image davidngo1704/task:latest
-fly launch --image davidngo1704/workflow:latest
+/root/.fly/bin/flyctl secrets set ASPNETCORE_ENVIRONMENT=Development
+/root/.fly/bin/flyctl launch --image davidngo1704/api-gateway:latest
+/root/.fly/bin/flyctl launch --image davidngo1704/authentication-api:latest
+/root/.fly/bin/flyctl launch --image davidngo1704/configuration-api:latest
+/root/.fly/bin/flyctl launch --image davidngo1704/main-api:latest
+/root/.fly/bin/flyctl launch --image davidngo1704/task:latest
+/root/.fly/bin/flyctl launch --image davidngo1704/workflow:latest
 
 --------------------------------------------------------------
 
-fly volumes create configuration_data --size 3
+/root/.fly/bin/flyctl volumes create configuration_data --size 3
 
-fly volumes create main_data --size 2
+/root/.fly/bin/flyctl volumes create main_data --size 2
 
-fly volumes create task_data --size 1
+/root/.fly/bin/flyctl volumes create task_data --size 1
 
 -------------------------------------------------------------
 
