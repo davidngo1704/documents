@@ -1,5 +1,7 @@
 curl -L https://fly.io/install.sh | sh
 
+fly auth login
+
 export FLYCTL_INSTALL="/root/.fly"
 
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
