@@ -1,8 +1,0 @@
-{
-    "Table__Edit__ActionRow": "(state, extData, errors, event, rowData) => { if(extData.__?.DialogUpdate__OpenDialog) {  extData.__?.DialogUpdate__OpenDialog(rowData); }  }",
-    "Table__Delete__ActionRow": "(state, extData, errors, event, rowData) => { (async function() {    const { data } = await extData.__?.httpClient?.deleteMethod(`configuration/FormDefinition/Delete?id=${rowData.Id}`);    })(); }",
-    "Search": "(state, extData, errors, event) => { delete state.Table; extData.__?.setValueForm('Table', state); }",
-    "Add": "(state, extData, errors, event) => { if(extData.__?.DialogAdd__OpenDialog) {  extData.__?.DialogAdd__OpenDialog()  }  }",
-    "DialogAdd__BeforeOpenDialog": "(state, extData, errors, event, tempState) => { return async function() {   const formRes = await formHelper.getFormByCode('Admin_FormDefinition_Add');     return {formDef: formRes }    }; }",
-    "DialogUpdate__BeforeOpenDialog": "(state, extData, errors, event, tempState) => { return async function() { const formRes = await formHelper.getFormByCode('Admin_FormDefinition_Update');   const { data } = await extData.__?.httpClient?.getMethod(`configuration/FormDefinition/GetFormByCode?code=${tempState.Code}`); return {formDef: formRes, initState: data } }; }"
-}

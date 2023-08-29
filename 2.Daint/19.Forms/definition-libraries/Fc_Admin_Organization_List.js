@@ -1,1 +1,0 @@
-(state, extData, fieldName, fieldValue) => {     extData.__?.setValueForm('Table', { DisableAutoLoadData: false, ParentID: fieldValue?.Id  });     }
